@@ -1,0 +1,224 @@
+%% Título: Diagrama de Clases del Módulo Alumno (Laravel)
+%% Objetivo: Documentar las clases PHP reales (controladores, middleware, modelos
+%%   Eloquent y Mailables) que implementan el Módulo Alumno y sus relaciones de uso.
+%% Descripción: Namespaces únicos: App\Http\Controllers, App\Http\Middleware, App\Models
+%%   y App\Mail. A diferencia de Yii2 no existen clases duplicadas por aplicación
+%%   (frontend/models y backend/models con el mismo namespace app\models): hay un solo
+%%   modelo por tabla. Solo se listan métodos y atributos existentes en el código.
+%% Notas de fidelidad al código:
+%%   - No hay LoginForm ni ninguna clase formulario: el inicio de sesión está escrito en
+%%     SiteController::login (líneas 76-120) con User::findActiveByUsername, Hash::check,
+%%     Auth::login y session()->regenerate().
+%%   - app/Http/Controllers/Controller.php es abstracta y está vacía: no mezcla los traits
+%%     AuthorizesRequests ni ValidatesRequests.
+%%   - No existen Form Requests (app/Http/Requests no existe) ni Gates/Policies: la
+%%     autorización se resuelve con el middleware EnsureRole y con abort()/abort_unless()
+%%     dentro de los controladores.
+%%   - El único pseudo-scope del módulo es ExpedientePregunta::activas(); los demás accesos
+%%     filtrados se construyen en el controlador con el Query Builder.
+%%   - User::hasRole/hasAnyRole/roles leen auth_assignment con DB facade, no con Eloquent,
+%%     porque auth_assignment tiene llave primaria compuesta de cadenas.
+%%   - NotificationMail expone la propiedad pública `message`, pero la pasa a la vista como
+%%     `contenido` (app/Mail/NotificationMail.php:11-12,36) porque `message` colisiona con
+%%     el objeto Message que Laravel inyecta en las plantillas de correo.
+%%   - GrupoMaster, Tutor y Notification declaran public $timestamps = false; User los
+%%     mantiene activos pero los escribe como enteros Unix con freshTimestampString().
+%%   - SiteController::login auto-selecciona el grupo cuando el tutor tiene exactamente uno
+%%     (SiteController.php:111-114) y guarda null cuando tiene varios, saltándose el
+%%     SelectGrupoController en el primer caso.
+%%   - SiteController::assignIdGrupo escribe session('id_grupo') desde la URL sin verificar
+%%     que el grupo pertenezca al usuario (SiteController.php:131-140): es la misma ruta
+%%     espejo heredada de Yii2 y se conserva como deuda (ver REPORTE_DIFERENCIAS).
+classDiagram
+    class Controller {
+        <<abstract>>
+    }
+
+    class EnsureRole {
+        +handle(request, next, roles) Response
+    }
+
+    class SiteController {
+        +index()
+        +acceso()
+        +showLogin(request)
+        +login(request)
+        +logout(request)
+        +assignIdGrupo(request, id_grupo)
+        +clearIdGrupo(request)
+    }
+    class SelectGrupoController {
+        +index()
+        +setGrupo(request)
+    }
+    class TutorController {
+        +perfil() View
+    }
+    class ExpedienteController {
+        +formulario()
+        +gestion(request)
+        +editarAlumno(id)
+        +guardarAlumno(request, id)
+        +ficha()
+        +perfil()
+        +guardar(request)
+        -guardarExpediente(request, alumno, gestion) void
+        -renderFormularioParaAlumno(alumno, gestion, action) View
+        #findAlumnoActual() Alumno
+    }
+    class ExpedientePreguntaController {
+        +index(request)
+        +guardar(request, id)
+        +ordenar(request)
+        +eliminar(id)
+        +toggle(id)
+        +ensurePreguntasBase()$ void
+    }
+    class NotificationController {
+        +index()
+        +read(id)
+    }
+    class GrupoMasterController {
+        +index(request)
+        +pendientes(request, idGrupo)
+        +enviarPrueba(request)
+        +enviarPendientes(request)
+        -getTutorGroup(request, idGrupo) GrupoMaster
+        -getPendingStudents(grupo) array
+    }
+
+    class User {
+        +STATUS_DELETED$ int
+        +STATUS_INACTIVE$ int
+        +STATUS_ACTIVE$ int
+        #table string
+        #fillable array
+        #hidden array
+        +freshTimestampString() string
+        +getAuthPassword() string
+        +getRememberTokenName() string
+        +setRememberToken(value) void
+        +isActive() bool
+        +hasRole(role) bool
+        +hasAnyRole(roles) bool
+        +roles() array
+        +alumno() HasOne
+        +tutor() HasOne
+        +findActiveByUsername(username)$ User
+        +findActiveAdminByUsername(username)$ User
+    }
+    class Alumno {
+        +GENEROS$ array
+        #table string
+        #fillable array
+        #casts array
+        +grupo() BelongsTo
+        +evaluaciones() HasMany
+        +expedientes() HasMany
+        +latestExpediente() HasOne
+        +getGeneroTextoAttribute() string
+        +getNombreCompletoAttribute() string
+    }
+    class GrupoMaster {
+        +public timestamps bool
+        #table string
+        #fillable array
+        #casts array
+        +alumnos() HasMany
+        +carrera() BelongsTo
+        +grupoLetra() BelongsTo
+        +periodo() BelongsTo
+        +semestre() BelongsTo
+        +tutor() BelongsTo
+        +getNombreAttribute() string
+    }
+    class Tutor {
+        +public timestamps bool
+        +user() BelongsTo
+        +grupoMasters() HasMany
+        +getNombreCompletoAttribute() string
+    }
+    class AlumnoExpediente {
+        +ESTATUS_BORRADOR$ string
+        +ESTATUS_ENVIADO$ string
+        #table string
+        #fillable array
+        #attributes array
+        #casts array
+        +alumno() BelongsTo
+        +revisor() BelongsTo
+        +getRespuestas() array
+    }
+    class ExpedientePregunta {
+        #table string
+        #fillable array
+        #casts array
+        +getOpcionesAttribute() array
+        +activas()$ Collection
+    }
+    class Notification {
+        #table string
+        +public timestamps bool
+        #fillable array
+        #attributes array
+        #casts array
+        +unreadCount(userId)$ int
+        +createForUser(userId, title, message, url, type)$ Notification
+    }
+
+    class ExpedientePendienteMail {
+        +grupo GrupoMaster
+        +pendientes array
+        +total int
+        +testEmail string
+        +modoNotificacionPrueba bool
+        +envelope() Envelope
+        +content() Content
+    }
+    class NotificationMail {
+        +title string
+        +message string
+        +url string
+        +envelope() Envelope
+        +content() Content
+    }
+
+    Controller <|-- SiteController
+    Controller <|-- SelectGrupoController
+    Controller <|-- TutorController
+    Controller <|-- ExpedienteController
+    Controller <|-- ExpedientePreguntaController
+    Controller <|-- NotificationController
+    Controller <|-- GrupoMasterController
+
+    SiteController ..> EnsureRole : protegido por alias role
+    EnsureRole ..> User : hasAnyRole
+    SiteController --> User : findActiveByUsername y Auth login
+    SelectGrupoController --> Tutor : valida propiedad del grupo
+    SelectGrupoController --> GrupoMaster : guarda id_grupo en sesion
+    TutorController --> Tutor : perfil con grupoMasters
+
+    ExpedienteController --> Alumno : findAlumnoActual por id_user
+    ExpedienteController --> AlumnoExpediente : versiona y guarda
+    ExpedienteController --> ExpedientePregunta : activas
+    ExpedienteController ..> ExpedientePreguntaController : ensurePreguntasBase
+
+    ExpedientePreguntaController --> ExpedientePregunta : firstOrCreate por clave
+
+    NotificationController --> Notification : lista y marca read_at
+
+    GrupoMasterController --> GrupoMaster : grupo del tutor
+    GrupoMasterController --> Alumno : alumnos con latestExpediente
+    GrupoMasterController --> AlumnoExpediente : criterio pendiente
+    GrupoMasterController --> Notification : createForUser warning
+    GrupoMasterController ..> ExpedientePendienteMail : enviarPrueba
+    GrupoMasterController ..> NotificationMail : enviarPendientes
+
+    User "1" --> "0..1" Alumno : id_user
+    User "1" --> "0..1" Tutor : id_user
+    GrupoMaster "1" --> "0..*" Alumno : id_grupo
+    Tutor "1" --> "0..*" GrupoMaster : id_tutor
+    Alumno "1" --> "0..*" AlumnoExpediente : id_alumno
+    Alumno "1" --> "0..1" AlumnoExpediente : latestExpediente
+    User "0..1" --> "0..*" AlumnoExpediente : revisado_por
+    User "1" --> "0..*" Notification : user_id

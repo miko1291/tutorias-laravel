@@ -1,0 +1,80 @@
+%% Título: Diagrama de Componentes — Módulo Alumno (Laravel)
+%% Objetivo: Describir los componentes que participan en el Módulo Alumno y sus
+%%   dependencias reales en la versión Laravel.
+%% Descripción: Derivado de routes/web.php (grupos de middleware), los controladores
+%%   app/Http/Controllers/*, los modelos app/Models/*, las vistas Blade y los Mailables.
+%% Notas de fidelidad al código:
+%%   - La navegación (navbar.blade.php) consulta roles con Auth::user()->hasRole()/
+%%     hasAnyRole(), que leen auth_assignment por DB facade (app/Models/User.php:66-88).
+%%   - ExpedienteController::formulario() llama a
+%%     ExpedientePreguntaController::ensurePreguntasBase() antes de renderizar
+%%     (ExpedienteController.php:18), acoplando ambos controladores.
+%%   - GrupoMasterController depende de Notification, Alumno, GrupoMaster, Tutor y de los
+%%     dos Mailables; no existe un servicio intermedio.
+flowchart LR
+
+subgraph NAV["Navegación y sesión"]
+    LAYOUT["layouts/app.blade.php<br/>auto-logout por inactividad (136-163)"]
+    NAVBAR["partials/navbar.blade.php<br/>menú por rol"]
+    SESS["Session<br/>clave id_grupo"]
+end
+
+subgraph FE["Módulo Alumno — controladores"]
+    SITE["SiteController<br/>index · acceso · showLogin · login<br/>logout · assignIdGrupo · clearIdGrupo"]
+    EXP["ExpedienteController<br/>formulario · ficha · perfil · guardar<br/>gestion · editarAlumno · guardarAlumno"]
+    PREG["ExpedientePreguntaController<br/>index · guardar · ordenar<br/>eliminar · toggle · ensurePreguntasBase"]
+    NOTIF["NotificationController<br/>index · read"]
+    GM["GrupoMasterController<br/>index · pendientes<br/>enviarPrueba · enviarPendientes"]
+    SEL["SelectGrupoController<br/>index · setGrupo"]
+    TUT["TutorController<br/>perfil"]
+end
+
+subgraph CO["Componentes de apoyo"]
+    ROLEMW["EnsureRole<br/>alias 'role'"]
+    ALUMCTRL["AlumnoController<br/>index · view · ficha · create · update · delete"]
+    MODELS["Modelos Eloquent<br/>User · Alumno · AlumnoExpediente<br/>ExpedientePregunta · Notification<br/>GrupoMaster · Tutor"]
+    MAILS["Mailables<br/>ExpedientePendienteMail<br/>NotificationMail"]
+end
+
+subgraph BE["Datos"]
+    DB[("MySQL tutorias_laravel<br/>tablas heredadas de Yii2")]
+end
+
+subgraph EXT["Externos"]
+    SMTP["SMTP / driver log"]
+end
+
+LAYOUT --> NAVBAR
+NAVBAR --> SESS
+NAVBAR --> SITE
+SITE --> SESS
+SEL --> SESS
+
+SITE --> ROLEMW
+EXP --> ROLEMW
+PREG --> ROLEMW
+GM --> ROLEMW
+NOTIF --> ROLEMW
+ALUMCTRL --> ROLEMW
+
+EXP --> PREG
+EXP --> MODELS
+PREG --> MODELS
+NOTIF --> MODELS
+GM --> MODELS
+GM --> MAILS
+ALUMCTRL --> MODELS
+TUT --> MODELS
+SEL --> MODELS
+
+MODELS --> DB
+MAILS --> SMTP
+
+classDef nav fill:#eef2ff,stroke:#4338ca,stroke-width:1px
+classDef fe fill:#fff4e5,stroke:#b45309,stroke-width:1px
+classDef co fill:#ecfdf5,stroke:#047857,stroke-width:1px
+classDef data fill:#f5f3ff,stroke:#6d28d9,stroke-width:1px
+class LAYOUT,NAVBAR,SESS nav
+class SITE,EXP,PREG,NOTIF,GM,SEL,TUT fe
+class ROLEMW,ALUMCTRL,MODELS,MAILS co
+class DB,SMTP data

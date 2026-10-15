@@ -1,0 +1,64 @@
+%% Título: Diagrama de Despliegue — Sistema de Control de Tutorías (Laravel)
+%% Objetivo: Representar los nodos físicos/lógicos donde se ejecuta la versión Laravel
+%%   y los artefactos que se despliegan en cada uno.
+%% Descripción: Elaborado a partir del entorno real de desarrollo (Laragon en Windows),
+%%   composer.json (php ^8.3, laravel/framework ^13.17 → v13.34.0 según composer.lock),
+%%   package.json, .env (DB_CONNECTION=mysql, DB_DATABASE=tutorias_laravel,
+%%   MAIL_MAILER=log) y config/database.php (conexión 'legacy' hacia la base Yii2).
+%% Notas de fidelidad al código:
+%%   - En desarrollo el servidor es `php artisan serve` / Apache de Laragon con DocumentRoot
+%%     en public/; no hay contenedores ni configuración de producción versionada.
+%%   - El driver de correo activo en .env es `log`, no SMTP: los correos se escriben en
+%%     storage/logs/laravel.log. Las pruebas usan MAIL_MAILER=array (phpunit.xml).
+%%   - La conexión 'legacy' apunta por omisión a la base `tutorias` (Yii2) y solo la usa
+%%     el comando artisan tutorias:migrate-legacy; el .env actual no define LEGACY_DB_*.
+%%   - storage/app/private/evidencias es el destino real de las evidencias subidas
+%%     (SemanaRealController::storeEvidence, disco 'local').
+flowchart TB
+
+subgraph CLIENTE["Nodo cliente — Navegador"]
+    BR["Edge / Chrome / Firefox<br/>Bootstrap 4.6.2 + jQuery 3.6.0 por CDN"]
+end
+
+subgraph SERVIDOR["Nodo servidor — Laragon (Windows, desarrollo)"]
+    subgraph WEB["Artefactos web"]
+        PHP["PHP ^8.3 · Apache/nginx de Laragon<br/>DocumentRoot: public/"]
+        LARAVEL["Laravel v13.34.0<br/>artisan serve / index.php"]
+        ARTISAN["CLI artisan<br/>migrate · db:seed DemoDataSeeder<br/>tutorias:migrate-legacy · test"]
+    end
+    subgraph FS["Sistema de archivos del proyecto"]
+        STORAGE["storage/app/private/evidencias<br/>storage/logs/laravel.log"]
+        VENDOR["vendor/ · node_modules/<br/>public/css · public/js"]
+    end
+    subgraph DBMS["SGBD — MySQL 8.x (Laragon)"]
+        DEST[("tutorias_laravel<br/>conexión default")]
+        SRC[("tutorias<br/>conexión 'legacy' — datos Yii2")]
+    end
+end
+
+subgraph EXT["Servicios externos"]
+    SMTP["Servidor SMTP<br/>(en .env actual: driver log)"]
+    CDN["cdn.jsdelivr.net / cdnjs<br/>Bootstrap · jQuery · iconos · AOS"]
+end
+
+BR -->|"HTTP/HTTPS"| PHP
+PHP --> LARAVEL
+LARAVEL -->|"Eloquent"| DEST
+LARAVEL -->|"Mailables"| SMTP
+LARAVEL -->|"logs y archivos"| STORAGE
+BR -->|"assets estáticos"| CDN
+ARTISAN -->|"migrate / seed"| DEST
+ARTISAN -->|"lee origen"| SRC
+ARTISAN -->|"insertOrIgnore"| DEST
+ARTISAN --> VENDOR
+
+classDef client fill:#e8f0fe,stroke:#1a56db,stroke-width:1px
+classDef web fill:#fff4e5,stroke:#b45309,stroke-width:1px
+classDef fs fill:#f1f5f9,stroke:#475569,stroke-width:1px
+classDef db fill:#f5f3ff,stroke:#6d28d9,stroke-width:1px
+classDef ext fill:#fdf2f8,stroke:#be185d,stroke-width:1px
+class BR client
+class PHP,LARAVEL,ARTISAN web
+class STORAGE,VENDOR fs
+class DEST,SRC db
+class SMTP,CDN ext

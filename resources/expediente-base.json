@@ -1,0 +1,1995 @@
+[
+    {
+        "clave": "campo_002",
+        "titulo": "Fecha de actualización",
+        "tipo": "date",
+        "seccion": "Datos Personales del Estudiante",
+        "seccion_orden": 2,
+        "orden": 1,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": ""
+        }
+    },
+    {
+        "clave": "campo_004",
+        "titulo": "Correo institucional",
+        "tipo": "email",
+        "seccion": "Datos Personales del Estudiante",
+        "seccion_orden": 2,
+        "orden": 2,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Ej. l21100@valladolid.tecnm.mx"
+        }
+    },
+    {
+        "clave": "campo_006",
+        "titulo": "Sexo",
+        "tipo": "select",
+        "seccion": "Datos Personales del Estudiante",
+        "seccion_orden": 2,
+        "orden": 3,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Hombre",
+            "Mujer"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Hombre": "Hombre",
+                "Mujer": "Mujer"
+            }
+        }
+    },
+    {
+        "clave": "fecha_nacimiento",
+        "titulo": "Fecha de nacimiento",
+        "tipo": "date",
+        "seccion": "Datos Personales del Estudiante",
+        "seccion_orden": 2,
+        "orden": 4,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "",
+            "max": "today"
+        }
+    },
+    {
+        "clave": "campo_009",
+        "titulo": "Teléfono personal",
+        "tipo": "tel",
+        "seccion": "Datos Personales del Estudiante",
+        "seccion_orden": 2,
+        "orden": 5,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "10 dígitos, sin espacios",
+            "maxlength": "10",
+            "pattern": "\\d{10}"
+        }
+    },
+    {
+        "clave": "campo_010",
+        "titulo": "Estado de procedencia",
+        "tipo": "select",
+        "seccion": "Procedencia",
+        "seccion_orden": 3,
+        "orden": 6,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Yucatán",
+            "Quintana Roo",
+            "Campeche",
+            "Tabasco",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Yucatán": "Yucatán",
+                "Quintana Roo": "Quintana Roo",
+                "Campeche": "Campeche",
+                "Tabasco": "Tabasco",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "campo_011",
+        "titulo": "Estado especificado",
+        "tipo": "text",
+        "seccion": "Procedencia",
+        "seccion_orden": 3,
+        "orden": 7,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique su estado",
+            "condicion": {
+                "clave": "campo_010",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "campo_012",
+        "titulo": "Municipio o localidad",
+        "tipo": "text",
+        "seccion": "Procedencia",
+        "seccion_orden": 3,
+        "orden": 8,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": ""
+        }
+    },
+    {
+        "clave": "campo_013",
+        "titulo": "Municipio especificado",
+        "tipo": "text",
+        "seccion": "Procedencia",
+        "seccion_orden": 3,
+        "orden": 9,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique su municipio/localidad",
+            "condicion": {
+                "clave": "campo_012",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "etnia",
+        "titulo": "¿Pertenece a alguna etnia Maya?",
+        "tipo": "radio",
+        "seccion": "Datos Culturales",
+        "seccion_orden": 4,
+        "orden": 10,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "hablante",
+        "titulo": "¿Es maya hablante?",
+        "tipo": "radio",
+        "seccion": "Datos Culturales",
+        "seccion_orden": 4,
+        "orden": 11,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "campo_014",
+        "titulo": "Porcentaje aproximado de lengua maya",
+        "tipo": "select",
+        "seccion": "Datos Culturales",
+        "seccion_orden": 4,
+        "orden": 12,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "100",
+            "90-80",
+            "70-60",
+            "50",
+            "30",
+            "0"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "0": "No habla ni entiende",
+                "30": "30%",
+                "50": "50%",
+                "100": "100%",
+                "90-80": "90–80%",
+                "70-60": "70–60%"
+            }
+        }
+    },
+    {
+        "clave": "campo_015",
+        "titulo": "Carrera",
+        "tipo": "select",
+        "seccion": "Datos Académicos",
+        "seccion_orden": 5,
+        "orden": 13,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "ISC",
+            "IC",
+            "II",
+            "IA",
+            "LA",
+            "LG"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "ISC": "Ingeniería en Sistemas Computacionales",
+                "IC": "Ingeniería Civil",
+                "II": "Ingeniería Industrial",
+                "IA": "Ingeniería Ambiental",
+                "LA": "Licenciatura en Administración",
+                "LG": "Licenciatura en Gastronomía"
+            }
+        }
+    },
+    {
+        "clave": "campo_016",
+        "titulo": "Semestre",
+        "tipo": "select",
+        "seccion": "Datos Académicos",
+        "seccion_orden": 5,
+        "orden": 14,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1",
+                "2": "2",
+                "3": "3",
+                "4": "4",
+                "5": "5",
+                "6": "6",
+                "7": "7",
+                "8": "8",
+                "9": "9",
+                "10": "10",
+                "11": "11",
+                "12": "12"
+            }
+        }
+    },
+    {
+        "clave": "campo_017",
+        "titulo": "Grupo",
+        "tipo": "select",
+        "seccion": "Datos Académicos",
+        "seccion_orden": 5,
+        "orden": 15,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "Unico"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "A": "A",
+                "B": "B",
+                "C": "C",
+                "D": "D",
+                "Unico": "Único"
+            }
+        }
+    },
+    {
+        "clave": "repeticion",
+        "titulo": "¿Tienes alguna asignatura en curso de repetición?",
+        "tipo": "radio",
+        "seccion": "Situación Académica",
+        "seccion_orden": 6,
+        "orden": 16,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "especial",
+        "titulo": "¿Tienes alguna asignatura en curso especial?",
+        "tipo": "radio",
+        "seccion": "Situación Académica",
+        "seccion_orden": 6,
+        "orden": 17,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "campo_018",
+        "titulo": "Asignaturas en repetición o curso especial",
+        "tipo": "textarea",
+        "seccion": "Situación Académica",
+        "seccion_orden": 6,
+        "orden": 18,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Escribe tu respuesta aquí...",
+            "condicion": {
+                "clave": "repeticion",
+                "valor": "Si",
+                "alternativa": "especial"
+            }
+        }
+    },
+    {
+        "clave": "req_reforzamiento",
+        "titulo": "Requiere reforzamiento académico",
+        "tipo": "radio",
+        "seccion": "Reforzamiento Académico e Idiomas",
+        "seccion_orden": 7,
+        "orden": 19,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "sol_reforzamiento",
+        "titulo": "Solicita reforzamiento",
+        "tipo": "radio",
+        "seccion": "Reforzamiento Académico e Idiomas",
+        "seccion_orden": 7,
+        "orden": 20,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "campo_019",
+        "titulo": "Asignaturas para reforzamiento",
+        "tipo": "textarea",
+        "seccion": "Reforzamiento Académico e Idiomas",
+        "seccion_orden": 7,
+        "orden": 21,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Ej. Cálculo Diferencial...",
+            "condicion": {
+                "clave": "sol_reforzamiento",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "cambridge",
+        "titulo": "Certificación Cambridge",
+        "tipo": "radio",
+        "seccion": "Reforzamiento Académico e Idiomas",
+        "seccion_orden": 7,
+        "orden": 22,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "campo_020",
+        "titulo": "Nivel de inglés",
+        "tipo": "select",
+        "seccion": "Reforzamiento Académico e Idiomas",
+        "seccion_orden": 7,
+        "orden": 23,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1",
+            "C2"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "A1": "A1",
+                "A2": "A2",
+                "B1": "B1",
+                "B2": "B2",
+                "C1": "C1",
+                "C2": "C2"
+            },
+            "condicion": {
+                "clave": "cambridge",
+                "valor": "No"
+            }
+        }
+    },
+    {
+        "clave": "barreras",
+        "titulo": "Barreras para el aprendizaje",
+        "tipo": "checkbox",
+        "seccion": "Riesgo Académico",
+        "seccion_orden": 8,
+        "orden": 24,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Económico",
+            "Familiar",
+            "Motivación",
+            "Enfermedad",
+            "Discapacidad",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Económico": "Económico",
+                "Familiar": "Familiar",
+                "Motivación": "Falta de motivación",
+                "Enfermedad": "Enfermedad",
+                "Discapacidad": "Discapacidad física",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "campo_021",
+        "titulo": "Otra barrera académica",
+        "tipo": "text",
+        "seccion": "Riesgo Académico",
+        "seccion_orden": 8,
+        "orden": 25,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Describe brevemente...",
+            "condicion": {
+                "clave": "barreras",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "campo_022",
+        "titulo": "Grupo sanguíneo",
+        "tipo": "select",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 26,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "A+",
+            "A-",
+            "B+",
+            "B-",
+            "AB+",
+            "AB-",
+            "O+",
+            "O-"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "A+": "A+",
+                "A-": "A-",
+                "B+": "B+",
+                "B-": "B-",
+                "AB+": "AB+",
+                "AB-": "AB-",
+                "O+": "O+",
+                "O-": "O-"
+            }
+        }
+    },
+    {
+        "clave": "enfermedad",
+        "titulo": "Enfermedad actual",
+        "tipo": "radio",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 27,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "campo_024",
+        "titulo": "Enfermedad o alergia especificada",
+        "tipo": "text",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 28,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Describa brevemente...",
+            "condicion": {
+                "clave": "enfermedad",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_025",
+        "titulo": "Parentesco del contacto de emergencia",
+        "tipo": "select",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 29,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Padre/Madre",
+            "Tutor",
+            "Hermano(a)",
+            "Conyuge",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Padre/Madre": "Padre / Madre",
+                "Tutor": "Tutor Legal",
+                "Hermano(a)": "Hermano(a)",
+                "Conyuge": "Cónyuge",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "campo_026",
+        "titulo": "Nombre del contacto de emergencia",
+        "tipo": "text",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 30,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Nombre de la persona"
+        }
+    },
+    {
+        "clave": "campo_027",
+        "titulo": "Teléfono del contacto de emergencia",
+        "tipo": "tel",
+        "seccion": "Salud y Contacto de Emergencia",
+        "seccion_orden": 9,
+        "orden": 31,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "10 dígitos",
+            "maxlength": "10",
+            "pattern": "\\d{10}"
+        }
+    },
+    {
+        "clave": "likert_1",
+        "titulo": "1. Me concentro bien en lo que hago.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 32,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_2",
+        "titulo": "2. Mis preocupaciones me han hecho perder mucho sueño.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 33,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_3",
+        "titulo": "3. Me siento útil en la vida.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 34,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_4",
+        "titulo": "4. Me siento capaz de tomar decisiones.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 35,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_5",
+        "titulo": "5. Me siento constantemente agobiado y en tensión.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 36,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_6",
+        "titulo": "6. Me siento capaz de superar mis dificultades.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 37,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_7",
+        "titulo": "7. Me siento capaz de disfrutar mis actividades normales de cada día.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 38,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_8",
+        "titulo": "8. He sido capaz de hacer frente a mis problemas.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 39,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_9",
+        "titulo": "9. Me he sentido poco feliz y deprimido.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 40,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "likert_10",
+        "titulo": "10. Siento confianza en mí mismo.",
+        "tipo": "radio",
+        "seccion": "Bienestar y Salud Reciente",
+        "seccion_orden": 10,
+        "orden": 41,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "5",
+            "4",
+            "3",
+            "2",
+            "1"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1 · Totalmente en desacuerdo",
+                "2": "2 · En desacuerdo",
+                "3": "3 · Ni de acuerdo ni en desacuerdo",
+                "4": "4 · De acuerdo",
+                "5": "5 · Totalmente de acuerdo"
+            }
+        },
+        "descripcion": "Responde pensando en las últimas semanas."
+    },
+    {
+        "clave": "disc_fisica",
+        "titulo": "Discapacidad física",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 42,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_fisica_tipo",
+        "titulo": "Tipo de discapacidad física",
+        "tipo": "checkbox",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 43,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Amputación",
+            "Disminución motriz",
+            "Ninguna",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Amputación": "Pérdida de extremidades o partes del cuerpo (amputación)",
+                "Disminución motriz": "Disminución motriz parcial o total de alguna extremidad",
+                "Ninguna": "Ninguna",
+                "Otro": "Otro"
+            },
+            "condicion": {
+                "clave": "disc_fisica",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_028",
+        "titulo": "Otra discapacidad física",
+        "tipo": "text",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 44,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique",
+            "condicion": {
+                "clave": "disc_fisica_tipo",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "disc_sensorial",
+        "titulo": "Discapacidad sensorial",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 45,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_sensorial_tipo",
+        "titulo": "Tipo de discapacidad sensorial",
+        "tipo": "checkbox",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 46,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Auditiva",
+            "Visual",
+            "Otra",
+            "Ninguna"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Auditiva": "Auditiva",
+                "Visual": "Visual",
+                "Otra": "Otra",
+                "Ninguna": "Ninguna"
+            },
+            "condicion": {
+                "clave": "disc_sensorial",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_029",
+        "titulo": "Otra discapacidad sensorial",
+        "tipo": "text",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 47,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique",
+            "condicion": {
+                "clave": "disc_sensorial_tipo",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "disc_intelectual",
+        "titulo": "Discapacidad intelectual",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 48,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_intelectual_tipo",
+        "titulo": "Tipo de discapacidad intelectual",
+        "tipo": "checkbox",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 49,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Síndrome de Down",
+            "TDAH",
+            "Problemas al nacer",
+            "TEA",
+            "Otra",
+            "Ninguna"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Síndrome de Down": "Condiciones genéticas: Síndrome de Down",
+                "TDAH": "Trastorno por Déficit de Atención e Hiperactividad (TDAH)",
+                "Problemas al nacer": "Problemas al nacer (falta de oxígeno)",
+                "TEA": "Trastorno del Espectro Autista (TEA)",
+                "Otra": "Otra",
+                "Ninguna": "Ninguna"
+            },
+            "condicion": {
+                "clave": "disc_intelectual",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_030",
+        "titulo": "Otra discapacidad intelectual",
+        "tipo": "text",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 50,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique",
+            "condicion": {
+                "clave": "disc_intelectual_tipo",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "disc_psiquica",
+        "titulo": "Discapacidad psíquica",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 51,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_psiquica_tipo",
+        "titulo": "Tipo de discapacidad psíquica",
+        "tipo": "checkbox",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 52,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Ansiedad/pánico",
+            "Estado de ánimo",
+            "Alimentación",
+            "Personalidad",
+            "Psicóticos/esquizofrenia",
+            "Otra",
+            "Ninguna"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Ansiedad/pánico": "Trastornos de ansiedad / trastorno de pánico",
+                "Estado de ánimo": "Depresión, trastorno bipolar y otros trastornos del estado de ánimo",
+                "Alimentación": "Trastornos de la alimentación",
+                "Personalidad": "Trastornos de la personalidad",
+                "Psicóticos/esquizofrenia": "Trastornos psicóticos / esquizofrenia",
+                "Otra": "Otra",
+                "Ninguna": "Ninguna"
+            },
+            "condicion": {
+                "clave": "disc_psiquica",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_031",
+        "titulo": "Otra discapacidad psíquica",
+        "tipo": "text",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 53,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique",
+            "condicion": {
+                "clave": "disc_psiquica_tipo",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "disc_visceral",
+        "titulo": "Discapacidad visceral",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 54,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_visceral_tipo",
+        "titulo": "Tipo de discapacidad visceral",
+        "tipo": "checkbox",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 55,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Problemas cardiacos",
+            "Insuficiencia renal",
+            "Hipertensión",
+            "Diabetes",
+            "Otra",
+            "Ninguna"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Problemas cardiacos": "Problemas cardiacos",
+                "Insuficiencia renal": "Insuficiencia renal",
+                "Hipertensión": "Hipertensión",
+                "Diabetes": "Diabetes",
+                "Otra": "Otra",
+                "Ninguna": "Ninguna"
+            },
+            "condicion": {
+                "clave": "disc_visceral",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "campo_032",
+        "titulo": "Otra discapacidad visceral",
+        "tipo": "text",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 56,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique",
+            "condicion": {
+                "clave": "disc_visceral_tipo",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "disc_multiple",
+        "titulo": "Discapacidad múltiple",
+        "tipo": "radio",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 57,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "disc_no_contemplada",
+        "titulo": "Otra discapacidad",
+        "tipo": "textarea",
+        "seccion": "Discapacidades del Estudiante",
+        "seccion_orden": 11,
+        "orden": 58,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Opcional"
+        }
+    },
+    {
+        "clave": "cirugias",
+        "titulo": "Cirugías",
+        "tipo": "textarea",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 59,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Describa las intervenciones o procedimientos relevantes..."
+        }
+    },
+    {
+        "clave": "alergia_medicamentos",
+        "titulo": "Alergias a medicamentos",
+        "tipo": "textarea",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 60,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Medicamento y reacción alérgica..."
+        }
+    },
+    {
+        "clave": "enfermedades",
+        "titulo": "Enfermedades relevantes",
+        "tipo": "checkbox",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 61,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "COVID-19",
+            "Alergias",
+            "Asma",
+            "Enfisema",
+            "Problemas cardiacos",
+            "Accidente cerebrovascular",
+            "Diabetes",
+            "Úlcera / Reflujo",
+            "Colitis / Enfermedad de Crohn",
+            "Cálculos renales",
+            "Incontinencia",
+            "Endometriosis",
+            "Migrañas",
+            "Trastornos dermatológicos",
+            "Trastornos psicológicos",
+            "Pérdida de la audición",
+            "Anemia",
+            "Transfusiones",
+            "Colesterol alto",
+            "Problemas de tiroides",
+            "Inflamación intestinal",
+            "Trastornos hepáticos",
+            "Insuficiencia renal",
+            "Trastornos mamarios",
+            "Mioma o fibroma uterino",
+            "Depresión",
+            "Bronquitis",
+            "Hipertensión",
+            "Colecistopatía",
+            "Convulsiones",
+            "Ansiedad",
+            "Fibromialgia",
+            "Hemorragias",
+            "Ninguna",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "COVID-19": "COVID-19",
+                "Alergias": "Alergias",
+                "Asma": "Asma",
+                "Enfisema": "Enfisema",
+                "Problemas cardiacos": "Problemas cardiacos",
+                "Accidente cerebrovascular": "Accidente cerebrovascular",
+                "Diabetes": "Diabetes",
+                "Úlcera / Reflujo": "Úlcera / Reflujo",
+                "Colitis / Enfermedad de Crohn": "Colitis / Enfermedad de Crohn",
+                "Cálculos renales": "Cálculos renales",
+                "Incontinencia": "Incontinencia",
+                "Endometriosis": "Endometriosis",
+                "Migrañas": "Migrañas",
+                "Trastornos dermatológicos": "Trastornos dermatológicos",
+                "Trastornos psicológicos": "Trastornos psicológicos",
+                "Pérdida de la audición": "Pérdida de la audición",
+                "Anemia": "Anemia",
+                "Transfusiones": "Transfusiones",
+                "Colesterol alto": "Colesterol alto",
+                "Problemas de tiroides": "Problemas de tiroides",
+                "Inflamación intestinal": "Inflamación intestinal",
+                "Trastornos hepáticos": "Trastornos hepáticos",
+                "Insuficiencia renal": "Insuficiencia renal",
+                "Trastornos mamarios": "Trastornos mamarios",
+                "Mioma o fibroma uterino": "Mioma o fibroma uterino",
+                "Depresión": "Depresión",
+                "Bronquitis": "Bronquitis",
+                "Hipertensión": "Hipertensión",
+                "Colecistopatía": "Colecistopatía",
+                "Convulsiones": "Convulsiones",
+                "Ansiedad": "Ansiedad",
+                "Fibromialgia": "Fibromialgia",
+                "Hemorragias": "Hemorragias",
+                "Ninguna": "Ninguna",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "enfermedad_otro",
+        "titulo": "Especifica otra enfermedad",
+        "tipo": "text",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 62,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique otra enfermedad",
+            "condicion": {
+                "clave": "enfermedades",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "infecciosas",
+        "titulo": "Enfermedades infecciosas",
+        "tipo": "checkbox",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 63,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "COVID-19",
+            "Varicela",
+            "Tuberculosis",
+            "Paperas",
+            "Fiebre reumática",
+            "Hepatitis A",
+            "Hepatitis B",
+            "Hepatitis C",
+            "Sarampión",
+            "Polio",
+            "Meningitis",
+            "Escarlatina",
+            "Gonorrea",
+            "Rubéola",
+            "Tosferina",
+            "Mononucleosis",
+            "Amigdalitis estreptocócica",
+            "Clamidia",
+            "Neumonía",
+            "VIH/SIDA",
+            "Sífilis",
+            "Ninguna",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "COVID-19": "COVID-19",
+                "Varicela": "Varicela",
+                "Tuberculosis": "Tuberculosis",
+                "Paperas": "Paperas",
+                "Fiebre reumática": "Fiebre reumática",
+                "Hepatitis A": "Hepatitis A",
+                "Hepatitis B": "Hepatitis B",
+                "Hepatitis C": "Hepatitis C",
+                "Sarampión": "Sarampión",
+                "Polio": "Polio",
+                "Meningitis": "Meningitis",
+                "Escarlatina": "Escarlatina",
+                "Gonorrea": "Gonorrea",
+                "Rubéola": "Rubéola",
+                "Tosferina": "Tosferina",
+                "Mononucleosis": "Mononucleosis",
+                "Amigdalitis estreptocócica": "Amigdalitis estreptocócica",
+                "Clamidia": "Clamidia",
+                "Neumonía": "Neumonía",
+                "VIH/SIDA": "VIH/SIDA",
+                "Sífilis": "Sífilis",
+                "Ninguna": "Ninguna",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "infecciosa_otro",
+        "titulo": "Especifica otra enfermedad infecciosa",
+        "tipo": "text",
+        "seccion": "Historial Médico · Confidencial",
+        "seccion_orden": 12,
+        "orden": 64,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique otra enfermedad infecciosa",
+            "condicion": {
+                "clave": "infecciosas",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "papa_estado",
+        "titulo": "Situación del padre",
+        "tipo": "radio",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 65,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Vive",
+            "Finado"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Vive": "Vive",
+                "Finado": "Finado"
+            }
+        }
+    },
+    {
+        "clave": "mama_estado",
+        "titulo": "Situación de la madre",
+        "tipo": "radio",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 66,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Vive",
+            "Finada"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Vive": "Vive",
+                "Finada": "Finada"
+            }
+        }
+    },
+    {
+        "clave": "papa_estudios",
+        "titulo": "Escolaridad del padre",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 67,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Sin estudios",
+            "Primaria",
+            "Secundaria",
+            "Preparatoria",
+            "Licenciatura",
+            "Maestría"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Sin estudios": "Sin estudios",
+                "Primaria": "Primaria",
+                "Secundaria": "Secundaria",
+                "Preparatoria": "Preparatoria",
+                "Licenciatura": "Licenciatura",
+                "Maestría": "Maestría"
+            }
+        }
+    },
+    {
+        "clave": "mama_estudios",
+        "titulo": "Escolaridad de la madre",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 68,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Sin estudios",
+            "Primaria",
+            "Secundaria",
+            "Preparatoria",
+            "Licenciatura",
+            "Maestría"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Sin estudios": "Sin estudios",
+                "Primaria": "Primaria",
+                "Secundaria": "Secundaria",
+                "Preparatoria": "Preparatoria",
+                "Licenciatura": "Licenciatura",
+                "Maestría": "Maestría"
+            }
+        }
+    },
+    {
+        "clave": "papa_trabajo",
+        "titulo": "Lugar de trabajo del padre",
+        "tipo": "text",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 69,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": ""
+        }
+    },
+    {
+        "clave": "mama_trabajo",
+        "titulo": "Lugar de trabajo de la madre",
+        "tipo": "text",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 70,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": ""
+        }
+    },
+    {
+        "clave": "ingreso_familiar",
+        "titulo": "Ingreso familiar",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 71,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "$100 - $500",
+            "$600 - $1,000",
+            "$1,100 - $1,500",
+            "$1,600 - $2,000",
+            "$2,100 - $2,500",
+            "$2,600 - $3,000",
+            "$3,100 o más"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "$100 - $500": "$100 - $500",
+                "$600 - $1,000": "$600 - $1,000",
+                "$1,100 - $1,500": "$1,100 - $1,500",
+                "$1,600 - $2,000": "$1,600 - $2,000",
+                "$2,100 - $2,500": "$2,100 - $2,500",
+                "$2,600 - $3,000": "$2,600 - $3,000",
+                "$3,100 o más": "$3,100 o más"
+            }
+        }
+    },
+    {
+        "clave": "automoviles",
+        "titulo": "Automóviles en la familia",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 72,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Ninguno",
+            "1",
+            "2",
+            "Más de 3"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "1": "1",
+                "2": "2",
+                "Ninguno": "Ninguno",
+                "Más de 3": "Más de 3"
+            }
+        }
+    },
+    {
+        "clave": "vivienda",
+        "titulo": "Tipo de vivienda",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 73,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Casa propia",
+            "Renta",
+            "Prestada"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Casa propia": "Casa propia",
+                "Renta": "Renta",
+                "Prestada": "Prestada"
+            }
+        }
+    },
+    {
+        "clave": "trabaja",
+        "titulo": "Trabaja actualmente",
+        "tipo": "radio",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 74,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "empresa",
+        "titulo": "Empresa o lugar de trabajo",
+        "tipo": "text",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 75,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "",
+            "condicion": {
+                "clave": "trabaja",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "turno_trabajo",
+        "titulo": "Turno de trabajo",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 76,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Matutino (Mañana)",
+            "Vespertino (Tarde)",
+            "Nocturno (Noche)"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Matutino (Mañana)": "Matutino (Mañana)",
+                "Vespertino (Tarde)": "Vespertino (Tarde)",
+                "Nocturno (Noche)": "Nocturno (Noche)"
+            },
+            "condicion": {
+                "clave": "trabaja",
+                "valor": "Si"
+            }
+        }
+    },
+    {
+        "clave": "seguro",
+        "titulo": "Servicio médico",
+        "tipo": "radio",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 77,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Si",
+            "No"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Si": "Sí",
+                "No": "No"
+            }
+        }
+    },
+    {
+        "clave": "gastos",
+        "titulo": "Gastos familiares",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 78,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "$100 - $500",
+            "$600 - $1,000",
+            "$1,100 - $1,500",
+            "$1,600 - $2,000",
+            "$2,100 - $2,500",
+            "$2,600 - $3,000",
+            "$3,100 o más"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "$100 - $500": "$100 - $500",
+                "$600 - $1,000": "$600 - $1,000",
+                "$1,100 - $1,500": "$1,100 - $1,500",
+                "$1,600 - $2,000": "$1,600 - $2,000",
+                "$2,100 - $2,500": "$2,100 - $2,500",
+                "$2,600 - $3,000": "$2,600 - $3,000",
+                "$3,100 o más": "$3,100 o más"
+            }
+        }
+    },
+    {
+        "clave": "contacto_accidente",
+        "titulo": "Contacto en caso de accidente",
+        "tipo": "select",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 79,
+        "requerido": true,
+        "activo": true,
+        "opciones": [
+            "Papá",
+            "Mamá",
+            "Hermanos",
+            "Tíos",
+            "Primos",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Papá": "Papá",
+                "Mamá": "Mamá",
+                "Hermanos": "Hermanos",
+                "Tíos": "Tíos",
+                "Primos": "Primos",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "idiomas",
+        "titulo": "Idiomas que habla",
+        "tipo": "checkbox",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 80,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Inglés",
+            "Maya",
+            "Otro"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Inglés": "Inglés",
+                "Maya": "Maya",
+                "Otro": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "idioma_otro",
+        "titulo": "Especifica otro idioma",
+        "tipo": "text",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 81,
+        "requerido": false,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "Especifique otro idioma",
+            "condicion": {
+                "clave": "idiomas",
+                "valor": "Otro"
+            }
+        }
+    },
+    {
+        "clave": "telefono_padres",
+        "titulo": "Teléfono de padres o tutores",
+        "tipo": "tel",
+        "seccion": "Situación de Estudio Socioeconómico",
+        "seccion_orden": 13,
+        "orden": 82,
+        "requerido": true,
+        "activo": true,
+        "opciones": [],
+        "configuracion": {
+            "placeholder": "10 dígitos, sin espacios ni guiones",
+            "maxlength": "10",
+            "pattern": "\\d{10}"
+        }
+    },
+    {
+        "clave": "habitos_estudio",
+        "titulo": "Hábitos de estudio",
+        "tipo": "checkbox",
+        "seccion": "Hábitos de Estudio",
+        "seccion_orden": 14,
+        "orden": 83,
+        "requerido": false,
+        "activo": true,
+        "opciones": [
+            "Escuchando",
+            "Viendo",
+            "Manipulando, practicando"
+        ],
+        "configuracion": {
+            "placeholder": "",
+            "etiquetas": {
+                "Escuchando": "Escuchando",
+                "Viendo": "Viendo",
+                "Manipulando, practicando": "Manipulando, practicando"
+            }
+        }
+    }
+]

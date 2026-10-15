@@ -1,0 +1,26 @@
+.ef-document{max-width:900px;margin:0 auto 40px;color:#20344a}
+.ef-cover{padding:30px;background:var(--tecm-blue);color:#fff;border-radius:8px;border-top:5px solid var(--tecm-blue);margin-bottom:20px}
+.ef-cover h1,.pit-app-shell .ef-cover h1{color:#fff;font-size:2rem;margin:8px 0}
+.ef-cover p{color:#e3edf6;margin:8px 0 0;line-height:1.6}
+.ef-eyebrow{font-size:.74rem;letter-spacing:.1em;text-transform:uppercase}
+.ef-identity{display:flex;gap:16px;flex-wrap:wrap;padding:18px 22px;margin-bottom:20px;border:1px solid #dce5ee;background:white;border-radius:8px}
+.ef-identity small{display:block;color:#63788a}.ef-identity>div{flex:1;min-width:150px}
+.ef-section{margin:24px 0;scroll-margin-top:85px}
+.ef-section-heading{background:#e8f0f8;border:1px solid #ccdcea;border-radius:8px;padding:20px 24px;margin-bottom:12px}
+.ef-section-heading h2{font-size:1.3rem;margin:0;color:var(--tecm-blue)}
+.ef-section-heading small{display:block;color:#536b80;margin-top:6px}
+.ef-question{padding:24px;margin:12px 0;background:#fff;border:1px solid #dce5ee;border-radius:8px}
+.ef-question[hidden]{display:none!important}
+.ef-question-title{display:block;font-size:1.02rem;font-weight:700;color:#20344a!important;margin-bottom:12px;line-height:1.5}
+.ef-required{color:#b33b3b;margin-left:5px}.ef-description{font-size:.9rem;color:#63788a;line-height:1.6;white-space:pre-line}
+.ef-control{display:block;width:100%;max-width:100%;border:1px solid #c9d7e4;border-radius:5px;padding:11px 12px;font:inherit;background:#fff;color:#20344a;min-height:44px}
+.ef-control:focus{outline:2px solid #8ebfe0;outline-offset:2px}.ef-control:disabled{background:#f7f9fc;color:#62778b}
+.ef-options{display:grid;gap:8px}.ef-option{display:flex!important;gap:10px;align-items:center;font-weight:400;color:#35536e!important;padding:10px 12px;border:1px solid #e0e8ef;border-radius:5px;margin:0;line-height:1.4}
+.ef-option input{flex:0 0 auto;width:17px;height:17px;accent-color:var(--tecm-blue)}.ef-option:has(input:checked){border-color:#6aa4d2;background:#eff6fc}
+.ef-progress{position:sticky;top:65px;z-index:10;background:#f4f7fb;border:1px solid #d9e5ef;border-radius:6px;padding:14px 18px;margin-bottom:20px}
+.ef-progress-top{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.88rem}
+.ef-progress-track{height:5px;background:#dce7f0;border-radius:3px;margin-top:10px;overflow:hidden}.ef-progress-track span{display:block;background:var(--tecm-blue);height:100%;transition:width .2s}
+.ef-section-links{display:flex;gap:7px;overflow-x:auto;padding:12px 0 4px}.ef-section-links a{white-space:nowrap;border:1px solid #d5e1eb;background:#fff;color:#35536e;padding:7px 10px;border-radius:5px;font-size:.8rem;text-decoration:none}
+.ef-submit{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;padding:24px;background:#fff;border:1px solid #dce5ee;border-radius:8px}.ef-submit small{max-width:45ch;color:#63788a}
+@media(max-width:600px){.ef-cover,.ef-question,.ef-section-heading{padding:20px}.ef-cover h1{font-size:1.6rem}.ef-progress-top{flex-wrap:wrap}.ef-submit .btn{width:100%}}
+@media print{header,.pit-site-footer,.ef-progress,.ef-submit,.breadcrumb,.student-page-heading,.student-page-tabs{display:none!important}.ef-document{max-width:none}.ef-question{break-inside:avoid}.ef-cover{background:white;color:var(--tecm-blue)}.ef-cover h1,.pit-app-shell .ef-cover h1,.ef-cover p{color:var(--tecm-blue)}.ef-section{break-before:auto}}

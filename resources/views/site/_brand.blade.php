@@ -1,0 +1,1 @@
+<a href="{{ url('/site/acceso') }}" class="auth-brand"><img src="{{ asset('images/tutorias.png') }}" alt=""><span><strong>ITSVA · Tutorías</strong><small>Instituto Tecnológico Superior de Valladolid</small></span></a>

@@ -1,0 +1,24 @@
+:root {
+    --tecm-blue: #00325f;
+    --tecm-blue-hover: #002548;
+    --tecm-blue-soft: #edf3f9;
+    --tecm-blue-line: #cbdbea;
+    --tecm-focus: #79a9d4;
+}
+.pit-app-shell .btn-primary,.pit-app-shell .btn-success,.pit-app-shell .btn-info{background:var(--tecm-blue);border-color:var(--tecm-blue);color:#fff}
+.pit-app-shell .btn-primary:hover,.pit-app-shell .btn-success:hover,.pit-app-shell .btn-info:hover{background:var(--tecm-blue-hover);border-color:var(--tecm-blue-hover)}
+.pit-app-shell .btn-outline-primary,.pit-app-shell .btn-outline-success,.pit-app-shell .btn-outline-info{border-color:var(--tecm-blue);color:var(--tecm-blue)}
+.pit-app-shell .btn-outline-primary:hover,.pit-app-shell .btn-outline-success:hover,.pit-app-shell .btn-outline-info:hover{background:var(--tecm-blue);color:#fff}
+.pit-app-shell .text-primary,.pit-app-shell .text-success,.pit-app-shell .text-info{color:var(--tecm-blue)!important}
+.pit-app-shell .bg-primary,.pit-app-shell .bg-success,.pit-app-shell .bg-info,.pit-app-shell .badge-primary,.pit-app-shell .badge-success,.pit-app-shell .badge-info{background:var(--tecm-blue)!important;color:#fff}
+.pit-app-shell .alert-success,.pit-app-shell .alert-info{background:var(--tecm-blue-soft);border-color:var(--tecm-blue-line);color:var(--tecm-blue)}
+.pit-app-shell .alert-success a,.pit-app-shell .alert-info a{color:var(--tecm-blue)}
+.pit-app-shell .badge-warning{background:var(--tecm-blue-soft);color:var(--tecm-blue)}
+.pit-app-shell .custom-control-input:checked~.custom-control-label::before{background:var(--tecm-blue);border-color:var(--tecm-blue)}
+.pit-app-shell input[type=checkbox],.pit-app-shell input[type=radio]{accent-color:var(--tecm-blue)}
+.pit-app-shell .btn-primary:not(:disabled):not(.disabled):active,.pit-app-shell .btn-success:not(:disabled):not(.disabled):active,.pit-app-shell .btn-info:not(:disabled):not(.disabled):active{background:var(--tecm-blue-hover);border-color:var(--tecm-blue-hover)}
+.pit-app-shell .btn-primary:focus,.pit-app-shell .btn-success:focus,.pit-app-shell .btn-info:focus,.pit-app-shell .btn-outline-primary:focus,.pit-app-shell .btn-outline-success:focus,.pit-app-shell .btn-outline-info:focus{box-shadow:0 0 0 .2rem #00325f30!important}
+.pit-app-shell .breadcrumb a,.pit-app-shell .page-link{color:var(--tecm-blue)}
+.pit-app-shell .page-item.active .page-link{background:var(--tecm-blue);border-color:var(--tecm-blue);color:#fff}
+.pit-navbar .nav-link>i,.pit-navbar .dropdown-item>i{display:inline-block;width:1.25em;text-align:center;margin-right:.25em}
+.update-tabs a{display:inline-flex;align-items:center;gap:8px}

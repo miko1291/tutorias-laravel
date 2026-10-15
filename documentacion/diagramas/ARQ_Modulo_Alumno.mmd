@@ -1,0 +1,76 @@
+%% Título: Diagrama de Arquitectura — Módulo Alumno (Laravel)
+%% Objetivo: Mostrar la arquitectura real de la versión Laravel del Sistema de Control
+%%   de Tutorías y dónde se ubica el Módulo Alumno dentro de ella.
+%% Descripción: Elaborado a partir del código verificado: bootstrap/app.php (registro de
+%%   rutas web, health /up y alias 'role' => EnsureRole), routes/web.php (rutas espejo de
+%%   las URLs de Yii2, grupos por middleware), app/Http/Middleware/EnsureRole.php,
+%%   app/Http/Controllers/*, app/Models/* (Eloquent), resources/views/* (Blade),
+%%   app/Mail/* y app/Console/Commands/MigrateLegacyData.php.
+%% Notas de fidelidad al código:
+%%   - No existe capa de servicios: la lógica de negocio vive en los controladores.
+%%   - No hay Form Requests (app/Http/Requests no existe) ni Gates/Policies; la
+%%     validación se hace con $request->validate() dentro de cada acción y la
+%%     autorización con el middleware 'role' más abort()/abort_unless() en el controlador.
+%%   - No hay rutas de API (routes/api.php no existe) ni colas: el correo se envía de
+%%     forma síncrona con Mail::to()->send().
+%%   - config/yii.php existe (yii2tech/illuminate) pero el middleware Yii no está
+%%     registrado en bootstrap/app.php, por lo que la integración mixta está INACTIVA.
+flowchart TB
+
+subgraph ACTORES["Actores"]
+    ALU["Alumno<br/>rol: alumno"]
+    TUT["Tutor<br/>rol: tutor"]
+    ADM["Administrador / Psicólogo<br/>roles: admin, psicologo, psicologa"]
+end
+
+subgraph HTTP["Capa HTTP — Laravel 13"]
+    ROUTES["routes/web.php<br/>rutas espejo de Yii2 sin urlManager"]
+    MW["Middleware<br/>web · auth · role:EnsureRole"]
+    CTRL["Controladores app/Http/Controllers<br/>SiteController · ExpedienteController<br/>ExpedientePreguntaController · NotificationController<br/>GrupoMasterController · SelectGrupoController<br/>TutorController · AlumnoController<br/>AsistenciaController · ProgramaController<br/>SemanaRealController · AdminController"]
+end
+
+subgraph DOMINIO["Capa de dominio — Eloquent"]
+    MODELS["app/Models (22 modelos, uno por tabla)<br/>User · Alumno · AlumnoExpediente<br/>ExpedientePregunta · Notification · GrupoMaster<br/>Tutor · Asistencia · Evaluacion · Criterio<br/>Diagnostico · Canalizacion · Pat · Semana<br/>SemanaReal · Performance · Carreras · Semestre<br/>GrupoLetra · PeriodoEscolar · CicloEscolar · Estatus"]
+end
+
+subgraph PRESENTACION["Capa de presentación"]
+    VIEWS["resources/views — Blade<br/>layouts/app · partials/head · partials/navbar<br/>expediente/* · grupo-master/* · notification/*<br/>alumno/* · asistencia/* · admin/* · programa/*"]
+    ASSETS["Bootstrap 4.6.2 + jQuery 3.6.0 por CDN<br/>public/css/pit-ui.css · public/css/site.css<br/>(Vite/Tailwind configurados pero app.js vacío)"]
+end
+
+subgraph SALIDAS["Servicios de salida"]
+    MAIL["app/Mail<br/>ExpedientePendienteMail · NotificationMail<br/>Mail::to()->send() síncrono"]
+    CONSOLE["app/Console/Commands<br/>tutorias:migrate-legacy"]
+end
+
+subgraph DATOS["Persistencia"]
+    DB[("MySQL — conexión default<br/>tutorias_laravel")]
+    LEGACY[("MySQL — conexión 'legacy'<br/>config/database.php:67-85<br/>base Yii2: tutorias")]
+    SMTP["Servidor SMTP / driver log"]
+end
+
+ALU --> ROUTES
+TUT --> ROUTES
+ADM --> ROUTES
+
+ROUTES --> MW
+MW --> CTRL
+CTRL --> MODELS
+CTRL --> VIEWS
+VIEWS --> ASSETS
+MODELS --> DB
+CTRL --> MAIL
+MAIL --> SMTP
+CONSOLE --> LEGACY
+CONSOLE --> DB
+
+classDef actor fill:#e8f0fe,stroke:#1a56db,stroke-width:1px
+classDef http fill:#fff4e5,stroke:#b45309,stroke-width:1px
+classDef domain fill:#ecfdf5,stroke:#047857,stroke-width:1px
+classDef view fill:#fdf2f8,stroke:#be185d,stroke-width:1px
+classDef data fill:#f5f3ff,stroke:#6d28d9,stroke-width:1px
+class ALU,TUT,ADM actor
+class ROUTES,MW,CTRL http
+class MODELS domain
+class VIEWS,ASSETS view
+class DB,LEGACY,SMTP data

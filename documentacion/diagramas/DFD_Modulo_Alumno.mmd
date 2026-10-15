@@ -1,0 +1,75 @@
+%% Título: Diagrama de Flujo de Datos — Módulo Alumno (Laravel)
+%% Objetivo: Mostrar los procesos del Módulo Alumno, las entidades externas y los
+%%   depósitos de datos que intervienen, con los flujos reales entre ellos.
+%% Descripción: Derivado de los controladores verificados: SiteController,
+%%   SelectGrupoController, ExpedienteController, ExpedientePreguntaController,
+%%   GrupoMasterController, NotificationController y AlumnoController; y de los modelos
+%%   Eloquent que mapean las tablas heredadas de Yii2.
+%% Notas de fidelidad al código:
+%%   - P2 versiona el expediente incrementando `version` sobre el último registro
+%%     (ExpedienteController.php:107-114); no crea una fila nueva por versión, reutiliza
+%%     la última y le sube el contador.
+%%   - P4 es el único proceso que escribe `revisado_por` y `revisado_at`
+%%     (ExpedienteController.php:164-167), y solo cuando $gestion es true.
+%%   - P5 deduplica avisos en una ventana de 24 h (Notification::createForUser,
+%%     app/Models/Notification.php:51-61) y omite alumnos sin id_user.
+%%   - No hay proceso de aprobación: ningún controlador escribe estatus 'aprobado',
+%%     aunque GrupoMasterController::getPendingStudents() lo reconoce como no-pendiente
+%%     (GrupoMasterController.php:195).
+flowchart LR
+
+ALU(["Alumno"])
+TUT(["Tutor"])
+ADM(["Administrador / Psicólogo"])
+SMTP(["Servidor SMTP / log"])
+
+subgraph PROCESOS["Procesos del Módulo Alumno"]
+    P1["P1 Autenticación y<br/>selección de grupo<br/>SiteController · SelectGrupoController"]
+    P2["P2 Captura y versionado<br/>del expediente<br/>ExpedienteController::guardar"]
+    P3["P3 Catálogo dinámico<br/>de preguntas<br/>ExpedientePreguntaController"]
+    P4["P4 Revisión de expedientes<br/>por área autorizada<br/>ExpedienteController::guardarAlumno"]
+    P5["P5 Notificación de<br/>expedientes pendientes<br/>GrupoMasterController · NotificationController"]
+end
+
+DS1[("DS1 user<br/>auth_assignment")]
+DS2[("DS2 alumno · grupo_master<br/>tutor · catálogos")]
+DS3[("DS3 alumno_expediente")]
+DS4[("DS4 expediente_pregunta")]
+DS5[("DS5 notification")]
+
+ALU -->|"usuario y contraseña"| P1
+TUT -->|"usuario y contraseña"| P1
+ADM -->|"usuario y contraseña"| P1
+P1 -->|"sesión iniciada · id_grupo"| ALU
+P1 -->|"sesión iniciada · id_grupo"| TUT
+
+P1 -->|"lee credenciales y rol"| DS1
+P1 -->|"lee tutor y grupos"| DS2
+
+ALU -->|"respuestas del formulario"| P2
+P2 -->|"respuestas_json · version++<br/>estatus=enviado · fecha_nac"| DS3
+P2 -->|"actualiza edad campo_007"| DS2
+P3 -->|"preguntas activas"| P2
+DS4 -->|"activas() por seccion y orden"| P3
+
+ADM -->|"buscar · editar · guardar"| P4
+P4 -->|"respuestas_json · version++<br/>revisado_por · revisado_at"| DS3
+P4 -->|"lectura paginada"| DS2
+
+TUT -->|"GET grupo-master/pendientes"| P5
+P5 -->|"alumnos sin enviado/aprobado"| DS2
+P5 -->|"latestExpediente por alumno"| DS3
+TUT -->|"POST enviar-pendientes"| P5
+P5 -->|"createForUser warning"| DS5
+P5 -->|"NotificationMail"| SMTP
+TUT -->|"POST enviar-prueba"| P5
+P5 -->|"ExpedientePendienteMail"| SMTP
+ALU -->|"GET notification/index · read/{id}"| P5
+P5 -->|"read_at · url reescrita"| DS5
+
+classDef ext fill:#e8f0fe,stroke:#1a56db,stroke-width:1px
+classDef proc fill:#fff4e5,stroke:#b45309,stroke-width:1px
+classDef store fill:#f5f3ff,stroke:#6d28d9,stroke-width:1px
+class ALU,TUT,ADM,SMTP ext
+class P1,P2,P3,P4,P5 proc
+class DS1,DS2,DS3,DS4,DS5 store

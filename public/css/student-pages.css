@@ -1,0 +1,176 @@
+.pit-app-shell:has(.student-area-page) .pit-main > .pit-content {
+    margin-top: 16px !important;
+    padding-top: 16px;
+    background: transparent;
+    box-shadow: none;
+}
+.student-area-page {
+    --student-blue: var(--tecm-blue);
+    --student-accent: var(--tecm-blue);
+    --student-line: #e0e8ef;
+    --student-muted: #63788a;
+    max-width: 1160px;
+    margin: 8px auto 48px;
+    color: #243c52;
+    font-family: var(--pit-font);
+}
+.student-area-page *, .student-area-page *::before, .student-area-page *::after { box-sizing: border-box; }
+.student-area-page .student-page-heading { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin: 0 0 25px; }
+.student-area-page .student-eyebrow { display: block; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--student-accent); }
+.student-area-page .student-page-heading h1 { margin: 8px 0; font-size: 2.1rem; font-weight: 750; letter-spacing: -.035em; color: var(--student-blue); }
+.student-area-page .student-page-heading p { margin: 0; color: var(--student-muted); font-size: .91rem; line-height: 1.6; }
+.student-area-page .student-heading-identity { display: flex; align-items: center; gap: 12px; flex-shrink: 0; }
+.student-area-page .student-mini-avatar { display: grid; place-items: center; width: 42px; height: 42px; background: var(--tecm-blue-soft); color: var(--student-accent); border-radius: 50%; font-size: 1rem; font-weight: 750; }
+.student-area-page .student-heading-identity strong, .student-area-page .student-heading-identity span:not(.student-mini-avatar) { display: block; }
+.student-area-page .student-heading-identity strong { font-size: .84rem; }
+.student-area-page .student-heading-identity div span { margin-top: 3px; font-size: .73rem; color: var(--student-muted); }
+.student-area-page .student-page-tabs { display: flex; gap: 6px; margin-bottom: 26px; padding: 5px; background: #eaf0f5; border-radius: 10px; width: fit-content; max-width: 100%; }
+.student-area-page .student-page-tab { display: flex; align-items: center; justify-content: center; gap: 9px; padding: 11px 18px; border-radius: 7px; color: #597086; font-size: .82rem; font-weight: 650; text-decoration: none; }
+.student-area-page .student-page-tab.is-current { color: var(--student-blue); background: #fff; box-shadow: 0 2px 5px #173f6b0d; }
+.student-area-page .student-page-tab:hover { color: var(--student-accent); background: #ffffff99; }
+.student-area-page a:focus-visible, .student-area-page button:focus-visible { outline: 3px solid var(--tecm-focus); outline-offset: 3px; }
+.student-area-page .student-profile-banner { display: flex; gap: 22px; align-items: center; padding: 32px; color: #fff; background: var(--student-blue); border-radius: 12px; }
+.student-area-page .student-profile-avatar { display: grid; place-items: center; flex: 0 0 76px; height: 76px; border-radius: 20px; background: #ffffff1c; border: 1px solid #ffffff33; color: #fff; font-size: 1.8rem; font-weight: 700; }
+.student-area-page .student-profile-banner h2 { color: #fff; font-size: 1.7rem; letter-spacing: -.025em; margin: 0 0 9px; font-weight: 700; }
+.student-area-page .student-profile-banner p { color: #d0dfec; margin: 0; font-size: .85rem; }
+.student-area-page .student-profile-banner .student-status { margin-left: auto; flex-shrink: 0; }
+.student-area-page .student-status { display: inline-flex; align-items: center; gap: 7px; padding: 7px 11px; border-radius: 30px; background: #edf5f8; color: #355e7c; font-size: .74rem; font-weight: 700; }
+.student-area-page .student-status--sent { color: var(--tecm-blue); background: var(--tecm-blue-soft); }
+.student-area-page .student-status--pending { color: var(--tecm-blue); background: var(--tecm-blue-soft); }
+.student-area-page .student-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin: 22px 0; }
+.student-area-page .student-info-card { background: #fff; border: 1px solid var(--student-line); border-radius: 12px; padding: 25px; }
+.student-area-page .student-card-heading { display: flex; align-items: center; gap: 12px; padding-bottom: 20px; border-bottom: 1px solid #edf2f6; }
+.student-area-page .student-card-heading > i { display: grid; place-items: center; width: 38px; height: 38px; border-radius: 10px; background: #edf5f8; color: var(--student-accent); font-size: 1.15rem; }
+.student-area-page .student-card-heading h2 { margin: 0; font-size: 1.03rem; font-weight: 700; color: var(--student-blue); }
+.student-area-page .student-card-heading p { margin: 4px 0 0; font-size: .76rem; color: var(--student-muted); }
+.student-area-page .student-data-list { margin: 8px 0 0; }
+.student-area-page .student-data-row { display: grid; grid-template-columns: 145px minmax(0, 1fr); gap: 14px; padding: 13px 0; border-bottom: 1px solid #edf2f6; }
+.student-area-page .student-data-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.student-area-page .student-data-row dt { color: var(--student-muted); font-size: .8rem; font-weight: 400; }
+.student-area-page .student-data-row dd { margin: 0; font-size: .84rem; font-weight: 600; overflow-wrap: anywhere; }
+.student-area-page .student-next-step { display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 23px 26px; background: var(--tecm-blue-soft); border: 1px solid var(--tecm-blue-line); border-radius: 12px; }
+.student-area-page .student-next-step h2 { margin: 0 0 6px; font-size: 1rem; color: var(--student-blue); font-weight: 700; }
+.student-area-page .student-next-step p { margin: 0; color: #5c7685; font-size: .83rem; }
+.student-area-page .student-button { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 11px 17px; background: var(--student-accent); color: #fff; border: 1px solid var(--student-accent); border-radius: 7px; font-size: .82rem; font-weight: 650; text-decoration: none; white-space: nowrap; }
+.student-area-page .student-button:hover { color: #fff; background: var(--tecm-blue); }
+.student-area-page .student-button--secondary { color: var(--student-blue); background: #fff; border-color: var(--student-line); }
+.student-area-page .student-button--secondary:hover { color: var(--student-blue); background: #edf5f8; }
+.student-area-page .student-record-summary { display: flex; gap: 24px; align-items: center; flex-wrap: wrap; padding: 22px 25px; margin-bottom: 22px; background: #fff; border: 1px solid var(--student-line); border-radius: 12px; }
+.student-area-page .student-record-summary > div { flex: 1; min-width: 130px; }
+.student-area-page .student-record-summary small { display: block; color: var(--student-muted); margin-bottom: 6px; font-size: .74rem; }
+.student-area-page .student-record-summary strong { font-size: .86rem; font-weight: 650; }
+.student-area-page .student-record-summary .student-button { margin-left: auto; }
+.student-area-page .expediente-ficha { max-width: none; margin: 0; }
+.student-area-page .expediente-ficha .ficha-header, .student-area-page .expediente-ficha .ficha-updated, .student-area-page .expediente-ficha .ficha-actions { display: none; }
+.student-area-page .ficha-body { gap: 24px; grid-template-columns: 230px minmax(0, 1fr); margin: 0; }
+.student-area-page .ficha-body > * { min-width: 0; }
+.student-area-page .ficha-nav { border-color: var(--student-line); border-radius: 10px; box-shadow: none; padding: 20px 12px; }
+.student-area-page .ficha-nav a { font-family: inherit; font-size: .8rem; padding: 10px; }
+.student-area-page .ficha-nav li.is-active a { color: var(--student-accent); background: var(--tecm-blue-soft); border-color: var(--tecm-blue-line); }
+.student-area-page .ficha-section { margin: 0 0 20px; border: 1px solid var(--student-line); border-radius: 12px; box-shadow: none; padding: 26px; scroll-margin-top: 90px; }
+.student-area-page .ficha-section h2 { font-size: 1.05rem; color: var(--student-blue); border-bottom: 1px solid #edf2f6; padding-bottom: 16px; }
+.student-area-page .ficha-section:last-of-type h2::after { content: none; }
+.student-area-page .ficha-section[id="ficha-valoracion-de-riesgo-academico"] h2::after { content: '1 = totalmente en desacuerdo · 3 = neutral · 5 = totalmente de acuerdo'; display: block; margin-top: 8px; color: var(--student-muted); font-size: .73rem; font-weight: 400; }
+.student-area-page .ficha-field, .student-area-page .ficha-section--health .ficha-field:nth-child(-n+3) { background: #f8fafc; border-color: #edf2f6; border-radius: 8px; padding: 15px; }
+.student-area-page .ficha-label { font-size: .76rem; text-transform: none; letter-spacing: 0; color: var(--student-muted); }
+.student-area-page .ficha-badge, .student-area-page .ficha-section--health .ficha-badge { background: transparent; border: 0; padding: 0; margin-right: 10px; font-size: .87rem; color: #243c52; font-weight: 600; overflow-wrap: anywhere; }
+.student-area-page .student-empty { padding: 42px 24px; text-align: center; border: 1px dashed #ccdce7; border-radius: 12px; background: #fff; }
+.student-area-page .student-empty > i { display: inline-grid; place-items: center; width: 60px; height: 60px; border-radius: 50%; background: #edf5f8; color: var(--student-accent); font-size: 1.6rem; margin-bottom: 18px; }
+.student-area-page .student-empty h2 { font-size: 1.25rem; color: var(--student-blue); }
+.student-area-page .student-empty p { margin: 10px auto 23px; max-width: 420px; font-size: .88rem; color: var(--student-muted); }
+.student-area-page .student-save-note { display: flex; align-items: flex-start; gap: 10px; padding: 14px 18px; margin-bottom: 22px; background: var(--tecm-blue-soft); border: 1px solid var(--tecm-blue-line); border-radius: 8px; color: #3e6575; font-size: .82rem; line-height: 1.6; }
+.student-area-page .student-save-note i { color: var(--student-accent); }
+.student-area-page.expediente-formulario { font-family: "Segoe UI", Arial, sans-serif; max-width: 1160px; }
+.student-area-page.expediente-formulario .max-w-5xl { max-width: none !important; }
+.student-area-page.expediente-formulario .itsva-caratula { background: #fff !important; border: 1px solid var(--student-line) !important; border-radius: 12px !important; box-shadow: none !important; }
+.student-area-page.expediente-formulario .itsva-caratula-top { padding: 23px 25px; }
+.student-area-page.expediente-formulario .itsva-caratula h1 { font-family: inherit; color: var(--student-blue) !important; font-size: 1.1rem; max-width: 40ch; }
+.student-area-page.expediente-formulario .itsva-eyebrow { color: var(--student-accent) !important; font-family: inherit; font-size: .62rem; letter-spacing: .08em; }
+.student-area-page.expediente-formulario .itsva-caratula-sub { color: var(--student-muted); font-size: .8rem; }
+.student-area-page.expediente-formulario .itsva-folio-box { background: #f8fafc; border: 1px solid var(--student-line); min-width: 260px; max-width: 100%; }
+.student-area-page.expediente-formulario .itsva-folio-box .row { margin: 0; border-color: var(--student-line); gap: 15px; }
+.student-area-page.expediente-formulario .itsva-folio-box .row span:first-child { color: var(--student-muted); }
+.student-area-page.expediente-formulario .itsva-folio-box .row span:last-child, .student-area-page.expediente-formulario .itsva-folio-box input[type=date] { color: var(--student-blue) !important; }
+.student-area-page.expediente-formulario .itsva-avisos { padding: 16px 25px; background: #f8fafc; border-top: 1px solid var(--student-line); }
+.student-area-page.expediente-formulario .expediente-workspace { display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 24px; align-items: start; margin-top: 24px; }
+.student-area-page.expediente-formulario .expediente-workspace .itsva-indice { display: block; position: sticky; top: 88px; padding: 22px 16px; margin: 0; max-height: calc(100vh - 110px); overflow-y: auto; border-color: var(--student-line); border-radius: 10px !important; box-shadow: none; }
+.student-area-page.expediente-formulario .expediente-index-heading h2 { font-family: inherit; color: var(--student-blue); font-size: 1.02rem; }
+.student-area-page.expediente-formulario .expediente-index-heading p { font-size: .78rem; margin-bottom: 18px; }
+.student-area-page.expediente-formulario .expediente-progress { padding: 14px 0 18px; border-radius: 0; border: 0; border-top: 1px solid var(--student-line); background: transparent; }
+.student-area-page.expediente-formulario .expediente-progress__top { display: block; font-size: .73rem; }
+.student-area-page.expediente-formulario .expediente-progress__top strong { display: block; margin-top: 7px; color: var(--student-accent); font-size: .9rem; }
+.student-area-page.expediente-formulario .expediente-workspace .itsva-indice ol { display: block; padding-top: 12px; columns: 1; border-top: 1px solid var(--student-line); }
+.student-area-page.expediente-formulario .expediente-workspace .itsva-indice li { display: flex; gap: 8px; align-items: flex-start; min-height: 0; padding: 10px 8px; margin: 3px 0; border: 1px solid transparent; background: transparent; font-size: .77rem; }
+.student-area-page.expediente-formulario .expediente-workspace .itsva-indice li::before { font-family: inherit; flex: 0 0 25px; min-width: 25px; font-size: .69rem; color: #8a9dab; }
+.student-area-page.expediente-formulario .expediente-workspace .itsva-indice li.is-active { background: var(--tecm-blue-soft); color: var(--student-accent); border-color: var(--tecm-blue-line); box-shadow: none; }
+.student-area-page.expediente-formulario .expediente-index-link { color: inherit; text-decoration: none; line-height: 1.5; }
+.student-area-page.expediente-formulario #actualizacionForm { border: 1px solid var(--student-line) !important; border-radius: 12px !important; box-shadow: none !important; }
+.student-area-page.expediente-formulario #actualizacionForm section { padding: 28px; }
+.student-area-page.expediente-formulario #actualizacionForm section > h2:first-of-type { font-family: inherit !important; font-size: 1.13rem !important; color: var(--student-blue) !important; }
+.student-area-page.expediente-formulario #actualizacionForm section > h2:first-of-type::before { background: var(--tecm-blue-soft); color: var(--student-accent); font-family: inherit; }
+.student-area-page.expediente-formulario #actualizacionForm label { font-size: .82rem; color: #3b5268; line-height: 1.5; }
+.student-area-page.expediente-formulario #actualizacionForm input, .student-area-page.expediente-formulario #actualizacionForm select, .student-area-page.expediente-formulario #actualizacionForm textarea { font-family: inherit; font-size: .85rem; border-radius: 7px !important; min-width: 0; }
+.student-area-page.expediente-formulario #actualizacionForm input[type=checkbox], .student-area-page.expediente-formulario #actualizacionForm input[type=radio] { accent-color: var(--student-accent); }
+.student-area-page.expediente-formulario .itsva-actions { padding: 20px 28px; flex-wrap: wrap; gap: 10px; }
+.student-area-page.expediente-formulario .itsva-action-button--save { background: var(--student-accent); border-color: var(--student-accent); }
+@media screen {
+    .student-area-page.expediente-formulario .itsva-caratula-top > div:first-child,
+    .student-area-page.expediente-formulario .itsva-avisos { display: none; }
+    .student-area-page.expediente-formulario .itsva-folio-box { display: grid; grid-template-columns: 2fr 1fr 1fr; width: 100%; background: transparent; border: 0; }
+    .student-area-page.expediente-formulario .itsva-folio-box .row { display: flex; flex-direction: column; gap: 7px; padding: 0 20px; border: 0; border-left: 1px solid var(--student-line); }
+    .student-area-page.expediente-formulario .itsva-folio-box .row:first-child { padding-left: 0; border-left: 0; }
+    .student-area-page.expediente-formulario .itsva-folio-box input[type=date] { text-align: left; min-height: 0; width: 100%; min-width: 0; }
+}
+@media (max-width: 900px) {
+    .student-area-page .student-heading-identity { display: none; }
+    .student-area-page .ficha-body { grid-template-columns: minmax(0, 1fr); gap: 18px; }
+    .student-area-page .ficha-nav { position: static; padding: 12px; }
+    .student-area-page .ficha-nav ol { display: flex; overflow-x: auto; gap: 5px; }
+    .student-area-page .ficha-nav li { flex-shrink: 0; }
+    .student-area-page.expediente-formulario .expediente-workspace { grid-template-columns: 1fr; gap: 18px; }
+    .student-area-page.expediente-formulario .expediente-workspace .itsva-indice { position: static; max-height: none; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 24px; }
+    .student-area-page.expediente-formulario .expediente-workspace .itsva-indice ol { grid-column: 1 / -1; display: flex; gap: 6px; overflow-x: auto; }
+    .student-area-page.expediente-formulario .expediente-workspace .itsva-indice li { flex: 0 0 185px; background: #f8fafc; }
+}
+@media (max-width: 600px) {
+    .student-area-page .student-page-heading { margin-bottom: 20px; }
+    .student-area-page .student-page-heading h1 { font-size: 1.7rem; }
+    .student-area-page .student-page-tabs { width: 100%; gap: 2px; padding: 4px; }
+    .student-area-page .student-page-tab { flex: 1; flex-direction: column; gap: 5px; padding: 10px 6px; font-size: .7rem; text-align: center; }
+    .student-area-page .student-page-tab i { font-size: 1rem; }
+    .student-area-page .student-profile-banner { flex-wrap: wrap; padding: 23px; gap: 16px; }
+    .student-area-page .student-profile-avatar { flex-basis: 56px; height: 56px; border-radius: 15px; font-size: 1.5rem; }
+    .student-area-page .student-profile-name { flex: 1; min-width: 150px; }
+    .student-area-page .student-profile-banner h2 { font-size: 1.3rem; }
+    .student-area-page .student-profile-banner .student-status { margin-left: 0; }
+    .student-area-page .student-profile-grid { grid-template-columns: 1fr; gap: 16px; }
+    .student-area-page .student-info-card { padding: 20px; }
+    .student-area-page .student-data-row { grid-template-columns: 115px minmax(0, 1fr); gap: 12px; }
+    .student-area-page .student-next-step { align-items: stretch; flex-direction: column; padding: 22px; }
+    .student-area-page .student-record-summary { padding: 20px; gap: 20px; }
+    .student-area-page .student-record-summary .student-button { width: 100%; }
+    .student-area-page .ficha-section { padding: 20px; }
+    .student-area-page .ficha-grid { grid-template-columns: 1fr; }
+    .student-area-page.expediente-formulario .itsva-caratula-top { padding: 20px; }
+    .student-area-page.expediente-formulario .itsva-folio-box { width: 100%; min-width: 0; }
+    .student-area-page.expediente-formulario .itsva-folio-box { grid-template-columns: 1fr 1fr; gap: 18px; }
+    .student-area-page.expediente-formulario .itsva-folio-box .row:first-child { grid-column: 1 / -1; }
+    .student-area-page.expediente-formulario .itsva-folio-box .row { padding: 0; border: 0; }
+    .student-area-page.expediente-formulario .itsva-avisos { padding: 16px 20px; }
+    .student-area-page.expediente-formulario .expediente-workspace .itsva-indice { grid-template-columns: 1fr; padding: 18px; }
+    .student-area-page.expediente-formulario #actualizacionForm section { padding: 24px 18px; }
+    .student-area-page.expediente-formulario .itsva-actions { padding: 18px; }
+    .student-area-page.expediente-formulario .itsva-actions button { width: 100%; }
+}
+@media print {
+    .student-area-page .no-print, .student-area-page .student-page-heading, .student-area-page .student-page-tabs, .student-area-page .student-button { display: none !important; }
+    .student-area-page { max-width: none; margin: 0; }
+    .student-area-page .expediente-ficha .ficha-header, .student-area-page .expediente-ficha .ficha-updated { display: flex; }
+    .student-area-page .student-record-summary { display: none; }
+    .student-area-page .ficha-body { display: block; }
+    .student-area-page .ficha-section { break-inside: avoid; }
+    .student-area-page.expediente-formulario .expediente-workspace { display: block; }
+    .student-area-page.expediente-formulario .expediente-workspace .itsva-indice { display: none !important; }
+    .student-area-page.expediente-formulario .itsva-caratula { background: #fff !important; color: var(--tecm-blue) !important; }
+    .student-area-page.expediente-formulario .itsva-caratula h1, .student-area-page.expediente-formulario .itsva-eyebrow { color: var(--tecm-blue) !important; }
+}

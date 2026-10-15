@@ -1,0 +1,170 @@
+%% Título: Diagrama Entidad-Relación del Módulo Alumno (Laravel)
+%% Objetivo: Representar las entidades de datos y sus cardinalidades que soportan el
+%%   Módulo Alumno en la versión Laravel del Sistema de Control de Tutorías (ITSVA).
+%% Descripción: Tablas tomadas de database/migrations/2026_09_30_000000_create_tutorias_legacy_tables.php
+%%   y 2026_10_01_044101_add_query_indexes_to_tutorias_tables.php, y de las relaciones
+%%   declaradas en app/Models/*.php. Alcance: acceso (user, auth_item, auth_item_child,
+%%   auth_assignment), expediente (alumno, grupo_master y sus catálogos,
+%%   alumno_expediente, expediente_pregunta) y notificaciones (notification).
+%% Notas de fidelidad al código:
+%%   - Las migraciones NO declaran llaves foráneas: cada tabla se crea con
+%%     Schema::hasTable() como guarda y únicamente $table->index(...). Las cardinalidades
+%%     dibujadas son las que impone el código Eloquent (belongsTo/hasMany/hasOne),
+%%     no restricciones del motor. La integridad referencial sigue siendo lógica.
+%%   - alumno_expediente ya tiene migración (líneas 176-190); en Yii2 se creó a mano.
+%%   - alumno.id_user ya está en la migración (línea 170) y es nullable.
+%%   - auth_item usa la columna `name` como PK (línea 38), mientras auth_assignment.item_name
+%%     y auth_item_child.parent/child la referencian solo por convención de nombres.
+%%   - auth_rule existe en la migración (líneas 59-66) pero ningún modelo la lee; en Yii2
+%%     estaba vacía. Se dibuja fuera del alcance del Módulo Alumno.
+%%   - grupo_master.id_tutor admite NULL (línea 146): grupos sin tutor asignado.
+%%   - expediente_pregunta.clave es UNIQUE (línea 195); es la llave de negocio que usa
+%%     ExpedientePreguntaController::ensurePreguntasBase() con firstOrCreate.
+%%   - user.created_at/updated_at son unsignedInteger (Unix), no datetime; User los escribe
+%%     con freshTimestampString() (app/Models/User.php:37-40).
+%%   - notification.created_at/read_at/email_sent_at son unsignedInteger y el modelo
+%%     declara public $timestamps = false (app/Models/Notification.php:11,28-33).
+%%   - Índices compuestos añadidos por la segunda migración: idx-expediente-alumno-latest
+%%     sobre alumno_expediente(id_alumno, id) —soporta latestOfMany('id')— e
+%%     idx-asistencia-grupo-fecha sobre asistencia(id_grupo, fecha).
+erDiagram
+    USER ||--o| ALUMNO : "perfil alumno (id_user)"
+    USER ||--o| TUTOR : "perfil tutor (id_user)"
+    USER ||--o{ AUTH_ASSIGNMENT : "rol asignado (user_id)"
+    AUTH_ITEM ||--o{ AUTH_ASSIGNMENT : "item (item_name)"
+    AUTH_ITEM ||--o{ AUTH_ITEM_CHILD : "padre (parent)"
+    AUTH_ITEM ||--o{ AUTH_ITEM_CHILD : "hijo (child)"
+    CARRERAS ||--o{ GRUPO_MASTER : "id_carrera"
+    SEMESTRE ||--o{ GRUPO_MASTER : "id_semestre"
+    GRUPO_LETRA ||--o{ GRUPO_MASTER : "id_grupoLetra"
+    PERIODO_ESCOLAR ||--o{ GRUPO_MASTER : "id_periodo"
+    TUTOR |o--o{ GRUPO_MASTER : "tutoria (id_tutor, nullable)"
+    GRUPO_MASTER ||--o{ ALUMNO : "conforma (id_grupo)"
+    ALUMNO ||--o{ ALUMNO_EXPEDIENTE : "versiona (id_alumno)"
+    USER |o--o{ ALUMNO_EXPEDIENTE : "revisa (revisado_por)"
+    USER ||--o{ NOTIFICATION : "recibe (user_id)"
+
+    USER {
+        smallint id PK
+        string username UK
+        string auth_key
+        string password_hash
+        string password_reset_token UK
+        string email UK
+        smallint status
+        int created_at
+        int updated_at
+        string verification_token
+    }
+    AUTH_ITEM {
+        string name PK
+        smallint type
+        text description
+        string rule_name
+        binary data
+        int created_at
+        int updated_at
+    }
+    AUTH_ITEM_CHILD {
+        string parent PK
+        string child PK
+    }
+    AUTH_ASSIGNMENT {
+        string item_name PK
+        string user_id PK
+        int created_at
+    }
+    ALUMNO {
+        int id PK
+        smallint id_user FK
+        string nombres
+        string apellidop
+        string apellidom
+        string matricula
+        string correo
+        string telefono
+        date fecha_nac
+        string ciudad
+        int genero
+        int id_grupo FK
+        datetime created_at
+        datetime updated_at
+    }
+    TUTOR {
+        int id PK
+        string nombre
+        string apellido
+        string correo
+        string telefono
+        int genero
+        smallint id_user FK
+    }
+    GRUPO_MASTER {
+        int id PK
+        int id_periodo FK
+        int id_carrera FK
+        int id_semestre FK
+        int id_grupoLetra FK
+        int id_tutor FK
+    }
+    CARRERAS {
+        int id PK
+        string nombre
+    }
+    SEMESTRE {
+        int id PK
+        string nombre
+        int num_semestre
+    }
+    GRUPO_LETRA {
+        int id PK
+        string letra_key
+    }
+    PERIODO_ESCOLAR {
+        int id PK
+        string nombre
+        int id_estatus
+        string letra_periodo
+        date date_start
+        date date_end
+        int id_ciclo
+        datetime created_at
+        datetime updated_at
+    }
+    ALUMNO_EXPEDIENTE {
+        int id PK
+        int id_alumno FK
+        int version
+        text respuestas_json
+        string estatus
+        text observaciones
+        smallint revisado_por FK
+        datetime revisado_at
+        datetime created_at
+        datetime updated_at
+    }
+    EXPEDIENTE_PREGUNTA {
+        int id PK
+        string clave UK
+        string titulo
+        text descripcion
+        string tipo
+        text opciones_json
+        string seccion
+        bool requerido
+        bool activo
+        int orden
+        datetime created_at
+        datetime updated_at
+    }
+    NOTIFICATION {
+        int id PK
+        smallint user_id FK
+        string title
+        text message
+        string type
+        string url
+        int read_at
+        int email_sent_at
+        int created_at
+    }
