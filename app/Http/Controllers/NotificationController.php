@@ -38,15 +38,12 @@ class NotificationController extends Controller
             return redirect('/notification/index');
         }
 
-        // Las notificaciones creadas desde el panel administrativo pueden
-        // conservar el dominio del backend, aunque el destino pertenece al
-        // portal del tutor. Resolvemos esa ruta dentro de esta aplicación.
         $notificationUrl = rawurldecode($notification->url);
+        // Los avisos antiguos pueden incluir el dominio del portal anterior.
         if (str_contains($notificationUrl, 'grupo-master/pendientes')) {
             parse_str((string) parse_url($notificationUrl, PHP_URL_QUERY), $params);
             $idGrupo = (int) ($params['idGrupo'] ?? 0);
 
-            // Compatibilidad con avisos anteriores, creados sin idGrupo.
             if (! $idGrupo) {
                 $tutor = Tutor::where('id_user', Auth::id())->first();
                 if ($tutor) {

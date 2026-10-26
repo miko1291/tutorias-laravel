@@ -41,7 +41,7 @@ body.pit-app-shell button,body.pit-app-shell input,body.pit-app-shell select,bod
 @media(max-width:767px){.pit-navbar .nav-link,.pit-navbar .logout{padding:.55rem .2rem!important}.pit-main{padding-top:52px}}
 @media(max-width:767px){.pit-public-hero .carousel-inner,.pit-public-hero .carousel-item{height:250px}.pit-public-hero .pit-carousel-image{object-position:center top}.pit-public-hero .carousel-item:after{background:rgba(7,31,58,.5)}.pit-public-hero .carousel-control-prev,.pit-public-hero .carousel-control-next{width:15%}.pit-public-hero .carousel-control-prev-icon,.pit-public-hero .carousel-control-next-icon{width:2.2rem;height:2.2rem}.pit-public-hero .carousel-indicators{bottom:10px}.pit-carousel-caption{left:8%;right:8%;max-width:none}.pit-carousel-caption strong{font-size:1.45rem}.pit-carousel-caption small{font-size:.85rem}}
 
-/* Institutional visual language: solid surfaces, restrained borders and no decorative gradients. */
+
 .pit-navbar{background:var(--tecm-blue)!important;box-shadow:0 1px 4px rgba(18,54,94,.16)!important}
 .pit-app-shell .card,.pit-app-shell .jumbotron,.pit-app-shell .table-responsive{border-radius:8px;box-shadow:0 1px 4px rgba(28,61,93,.05)}
 .pit-app-shell .btn{border-radius:5px}

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\AlumnoImportController;
 use App\Http\Controllers\AsistenciaController;
+use App\Http\Controllers\ExpedienteCatalogoController;
 use App\Http\Controllers\ExpedienteController;
 use App\Http\Controllers\ExpedientePreguntaController;
 use App\Http\Controllers\GrupoMasterController;
@@ -14,9 +16,6 @@ use App\Http\Controllers\SemanaRealController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\TutorController;
 use Illuminate\Support\Facades\Route;
-
-// Rutas espejo de las URLs originales de Yii2 (sin urlManager) para
-// conservar compatibilidad con marcadores y enlaces existentes.
 
 Route::get('/', [SiteController::class, 'index'])->name('home');
 Route::get('/site/index', [SiteController::class, 'index']);
@@ -66,6 +65,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/admin/performance/save', [AdminController::class, 'savePerformance']);
         Route::post('/admin/performance/{id}/delete', [AdminController::class, 'deletePerformance']);
         Route::get('/admin/catalogos/{catalog}', [AdminController::class, 'catalog']);
+        Route::get('/admin/expediente-catalogos', [ExpedienteCatalogoController::class, 'index'])->name('admin.expediente-catalogos');
+        Route::post('/admin/expediente-catalogos/{id}', [ExpedienteCatalogoController::class, 'save'])->name('admin.expediente-catalogos.save');
         Route::post('/admin/catalogos/{catalog}/save', [AdminController::class, 'saveCatalog']);
         Route::post('/admin/catalogos/{catalog}/{id}/save', [AdminController::class, 'saveCatalog']);
         Route::post('/admin/catalogos/{catalog}/{id}/delete', [AdminController::class, 'deleteCatalog']);
@@ -125,18 +126,17 @@ Route::middleware('auth')->group(function () {
         Route::post('/semana-real/delete/{id}', [SemanaRealController::class, 'delete'])->name('semana-real.delete');
     });
 
-    // alumno/ficha era pública en el filtro RBAC global del original;
-    // la protección efectiva la da el chequeo de id_grupo en el controlador.
     Route::get('/alumno/ficha/{id}', [AlumnoController::class, 'ficha']);
 
     Route::middleware('role:tutor,admin')->group(function () {
         Route::get('/alumno/view/{id}', [AlumnoController::class, 'view']);
     });
 
-    // En el original solo admin alcanza estas rutas (admin → All → /*);
-    // el rol tutor no tiene asignado /alumno/index|create|update|delete.
     Route::middleware('role:admin')->group(function () {
         Route::get('/alumno/index', [AlumnoController::class, 'index']);
+        Route::get('/alumno/importar', [AlumnoImportController::class, 'index'])->name('alumno.importar');
+        Route::post('/alumno/importar', [AlumnoImportController::class, 'store'])->name('alumno.importar.store');
+        Route::get('/alumno/plantilla', [AlumnoImportController::class, 'template'])->name('alumno.plantilla');
         Route::match(['get', 'post'], '/alumno/create/{id_grupo?}', [AlumnoController::class, 'create']);
         Route::match(['get', 'post'], '/alumno/update/{id}', [AlumnoController::class, 'update']);
         Route::post('/alumno/delete/{id}', [AlumnoController::class, 'delete']);

@@ -39,8 +39,6 @@ class Notification extends Model
             ->count();
     }
 
-    // En Yii, user_id nulo fallaba la validación y devolvía null; alumnos sin
-    // cuenta de portal se saltan aquí para no interrumpir el envío masivo.
     public static function createForUser(?int $userId, string $title, string $message, ?string $url = null, string $type = 'info'): ?self
     {
         if ($userId === null) {

@@ -1,8 +1,8 @@
 @php
     $slides = [
-        ['image' => 'tuto1.png', 'eyebrow' => 'Comunidad ITSVA', 'title' => 'Tu trayectoria nos une', 'description' => 'Cada experiencia es una oportunidad para aprender, compartir y crecer.', 'alt' => 'Estudiantes del ITSVA en una actividad de la comunidad'],
-        ['image' => 'tuto2.png', 'eyebrow' => 'Acompañamiento tutorial', 'title' => 'Avancemos juntos', 'description' => 'Acércate a tu tutora o tutor: encontrarás orientación para cada etapa.', 'alt' => 'Comunidad estudiantil del Instituto Tecnológico Superior de Valladolid'],
-        ['image' => 'tuto3.png', 'eyebrow' => 'Vida estudiantil', 'title' => 'Forma parte de tu comunidad', 'description' => 'Participa, conecta con tus compañeros y construye nuevas experiencias.', 'alt' => 'Participación de estudiantes en actividades institucionales del ITSVA'],
+        ['image' => 'tuto1.png', 'eyebrow' => 'Comunidad ITSVA', 'title' => 'Expediente del estudiante', 'description' => 'Revisa tus datos personales y actualízalos cuando sea necesario.', 'alt' => 'Estudiantes del ITSVA en una actividad de la comunidad'],
+        ['image' => 'tuto2.png', 'eyebrow' => 'Acompañamiento tutorial', 'title' => 'Tu tutor y tu grupo', 'description' => 'Consulta con tu tutor las actividades y las fechas de atención.', 'alt' => 'Comunidad estudiantil del Instituto Tecnológico Superior de Valladolid'],
+        ['image' => 'tuto3.png', 'eyebrow' => 'Vida estudiantil', 'title' => 'Avisos de tutoría', 'description' => 'Revisa las notificaciones para conocer las actividades pendientes.', 'alt' => 'Participación de estudiantes en actividades institucionales del ITSVA'],
     ];
 @endphp
 <section class="student-carousel" data-student-carousel role="region" aria-roledescription="carrusel" aria-label="Nuestra comunidad ITSVA">

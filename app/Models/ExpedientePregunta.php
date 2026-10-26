@@ -51,6 +51,20 @@ class ExpedientePregunta extends Model
             ->get();
     }
 
+    public function opcionesPara(array $respuestas): array
+    {
+        $configuracion = $this->configuracion ?? [];
+        if (! isset($configuracion['municipios_por_estado'])) {
+            return $this->opciones;
+        }
+        $estado = $respuestas[$configuracion['estado_clave'] ?? 'campo_010'] ?? '';
+
+        return array_values(array_unique([
+            ...(is_string($estado) ? ($configuracion['municipios_por_estado'][$estado] ?? []) : []),
+            'Otro',
+        ]));
+    }
+
     public function visibleCon(array $answers, Collection $questions, array $visited = []): bool
     {
         if (in_array($this->clave, $visited, true)) {

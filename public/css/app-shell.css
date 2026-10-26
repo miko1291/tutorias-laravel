@@ -103,7 +103,7 @@
         }
     }
 
-/* Shared layout for students, tutors and administration. */
+
 .pit-app-shell { min-height: 100vh; }
 .pit-app-shell .pit-main { padding-top: 0 !important; flex: 1 0 auto; }
 .pit-app-shell .pit-content { padding: 24px 24px 40px; max-width: 1320px !important; }

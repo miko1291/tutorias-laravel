@@ -42,6 +42,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="{{ url('/admin/catalogos/carreras') }}" id="navAdminCatalogos" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="bi bi-list-check" aria-hidden="true"></i> CATÁLOGOS</a>
                     <div class="dropdown-menu" aria-labelledby="navAdminCatalogos">
+                        <a class="dropdown-item" href="{{ route('admin.expediente-catalogos') }}"><i class="bi bi-geo-alt" aria-hidden="true"></i> Estados, municipios y listas</a>
+                        <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ url('/admin/catalogos/carreras') }}"><i class="bi bi-mortarboard" aria-hidden="true"></i> Carreras</a>
                         <a class="dropdown-item" href="{{ url('/admin/catalogos/semestres') }}"><i class="bi bi-123" aria-hidden="true"></i> Semestres</a>
                         <a class="dropdown-item" href="{{ url('/admin/catalogos/grupo-letra') }}"><i class="bi bi-collection" aria-hidden="true"></i> Letras de grupo</a>

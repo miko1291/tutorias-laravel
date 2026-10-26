@@ -9,7 +9,7 @@
 @endsection
 
 @section('content')
-<div class="alumno-update">
+<div class="alumno-update ui-resource-page">
 
     <x-ui.page-header eyebrow="Gestión académica" :title="'Editar alumno: '.$model->nombre_completo" description="Actualiza la información registrada del estudiante." />
 

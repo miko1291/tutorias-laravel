@@ -35,7 +35,7 @@
     @include('expediente._student-header', [
         'activePage' => 'perfil',
         'pageTitle' => 'Mi perfil',
-        'pageDescription' => 'Tu información personal y académica, en un solo lugar.',
+        'pageDescription' => 'Datos personales y académicos registrados.',
     ])
 
     <section class="student-profile-banner" aria-label="Identificación del estudiante">

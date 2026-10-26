@@ -12,7 +12,7 @@
 
 @section('content')
 <div class="notification-page">
-    <div class="notification-heading"><span>CONTROL DE TUTORÍAS</span><h1>Notificaciones</h1><p>Avisos importantes sobre tu seguimiento institucional.</p><small class="notification-heading__hint"><i class="fas fa-info-circle"></i> Selecciona un aviso para marcarlo como leído y abrir su detalle.</small></div>
+    <div class="notification-heading"><span>CONTROL DE TUTORÍAS</span><h1>Notificaciones</h1><p>Avisos de tutoría y del sistema.</p><small class="notification-heading__hint"><i class="fas fa-info-circle"></i> Selecciona un aviso para marcarlo como leído y abrir su detalle.</small></div>
     @if ($notifications->isEmpty())
         <div class="notification-empty"><i class="fas fa-check-circle"></i><strong>No tienes notificaciones</strong><span>Cuando exista un aviso, aparecerá aquí.</span></div>
     @else

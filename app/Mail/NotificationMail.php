@@ -8,8 +8,6 @@ use Illuminate\Mail\Mailables\Envelope;
 
 class NotificationMail extends Mailable
 {
-    // 'message' colisiona con el objeto Message que Laravel inyecta en las
-    // vistas de correo; la variable de la plantilla se llama 'contenido'.
     public function __construct(
         public string $title,
         public string $message,
@@ -33,6 +31,7 @@ class NotificationMail extends Mailable
             text: 'mail.notification-text',
             with: [
                 'title' => $this->title,
+                // Laravel reserva «message» para el objeto del correo.
                 'contenido' => $this->message,
                 'url' => $this->url,
             ],

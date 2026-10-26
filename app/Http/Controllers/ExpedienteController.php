@@ -71,6 +71,7 @@ class ExpedienteController extends Controller
         $submitted = $request->input('respuestas', []);
         abort_unless(is_array($submitted), 400, 'Formato de respuestas inválido.');
         $questions = ExpedientePregunta::activas()->keyBy('clave');
+        $previousAnswers = $alumno->latestExpediente?->getRespuestas() ?? [];
         $rules = ['respuestas' => ['present', 'array']];
         $attributes = [];
         foreach ($questions as $question) {
@@ -81,13 +82,19 @@ class ExpedienteController extends Controller
                 continue;
             }
             $settings = $question->configuracion ?? [];
+            $options = $question->opcionesPara($submitted);
+            $previous = $previousAnswers[$question->clave] ?? null;
+            $parent = $settings['estado_clave'] ?? null;
+            if (is_string($previous) && (! $parent || ($submitted[$parent] ?? null) === ($previousAnswers[$parent] ?? null))) {
+                $options[] = $previous;
+            }
             $fieldRules = [$question->requerido ? 'required' : 'nullable'];
             if ($question->tipo === 'checkbox') {
                 $fieldRules[] = 'array';
                 if ($question->requerido) {
                     $fieldRules[] = 'min:1';
                 }
-                $rules[$key.'.*'] = ['string', Rule::in($question->opciones)];
+                $rules[$key.'.*'] = ['string', Rule::in($options)];
             } elseif ($question->tipo === 'number') {
                 $fieldRules[] = 'numeric';
                 foreach (['min', 'max'] as $limit) {
@@ -109,7 +116,7 @@ class ExpedienteController extends Controller
                     $fieldRules[] = 'email';
                 }
                 if (in_array($question->tipo, ['select', 'radio'], true)) {
-                    $fieldRules[] = Rule::in($question->opciones);
+                    $fieldRules[] = Rule::in($options);
                 }
                 if (! empty($settings['pattern'])) {
                     $fieldRules[] = 'regex:~^(?:'.str_replace('~', '\\~', $settings['pattern']).')$~u';

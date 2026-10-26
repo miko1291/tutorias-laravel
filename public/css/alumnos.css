@@ -1,0 +1,63 @@
+.alumno-index { color: #263d53; }
+.alumno-index .ui-page-header { margin: 26px 0; align-items: center; }
+.alumno-index .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; padding: 9px 15px; font-size: .875rem; white-space: nowrap; }
+.alumnos-panel { background: #fff; border: 1px solid #dfe7ef; border-radius: 6px; box-shadow: 0 3px 12px #20344a06; overflow: hidden; }
+.alumnos-panel__heading { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 22px 24px; }
+.alumnos-panel__title { display: flex; align-items: center; gap: 12px; }
+.alumnos-panel__icon { display: grid; place-items: center; width: 42px; height: 42px; background: #edf3f9; color: #00325f; border-radius: 6px; }
+.alumnos-panel__title h2 { margin: 0 0 3px; font-size: 1.125rem; font-weight: 700; color: #00325f; }
+.alumnos-panel__title p, .alumnos-page-info { margin: 0; color: #6b7c8f; font-size: .875rem; }
+.alumnos-filters { padding: 20px 24px; background: #f8fafc; border-top: 1px solid #e5ebf1; border-bottom: 1px solid #e5ebf1; }
+.alumnos-filters__heading { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; font-size: .875rem; font-weight: 700; }
+.alumnos-filters__heading i { color: #64809a; font-size: .75rem; }
+.alumnos-filters__heading span { margin-left: auto; color: #728396; font-weight: 400; font-size: .8125rem; }
+.alumnos-filters__fields { display: grid; grid-template-columns: .6fr repeat(4, 1fr); gap: 14px; }
+.alumnos-filter { min-width: 0; }
+.alumnos-filter label { display: block; margin-bottom: 6px; font-size: .8125rem; font-weight: 600; }
+.alumno-index .alumnos-filter input { background: #fff; min-height: 40px; font-size: .875rem; padding: 8px 11px; }
+.alumnos-filter input::placeholder { color: #8b99a8; }
+.alumnos-filters__actions { display: flex; justify-content: flex-end; align-items: center; gap: 18px; margin-top: 14px; }
+.alumnos-clear { color: #62768a; font-size: .875rem; }
+.alumnos-clear i { margin-right: 4px; }
+.pit-app-shell .alumnos-table-wrap { border: 0; border-radius: 0 !important; box-shadow: none; }
+.alumno-index .alumnos-table { min-width: 600px; }
+.alumno-index .alumnos-table thead th { background: #fff; color: #6a7d8f; font-size: .75rem; text-transform: uppercase; font-weight: 700; padding: 14px 24px; border-top: 0; border-bottom: 1px solid #e5ebf1; }
+.alumno-index .alumnos-table td { padding: 14px 24px; vertical-align: middle; border-top: 1px solid #edf1f5; }
+.alumnos-table tbody tr:hover { background: #f6f9fc; }
+.alumno-index .alumnos-number { width: 66px; color: #8391a0; text-align: center; font-size: .8125rem; }
+.alumnos-person { display: flex; align-items: center; gap: 12px; }
+.alumnos-avatar { display: grid; place-items: center; flex-shrink: 0; width: 38px; height: 38px; background: #edf3f9; color: #41627f; border: 1px solid #e0e9f2; border-radius: 50%; font-size: .75rem; font-weight: 700; text-transform: uppercase; }
+.alumnos-name { color: #203e5c; font-size: .9375rem; font-weight: 600; }
+.alumnos-name:hover { color: #00325f; }
+.alumnos-id { display: block; margin-top: 3px; color: #8190a0; font-size: .75rem; }
+.alumnos-matricula { display: inline-block; padding: 4px 9px; background: #f3f6fa; border: 1px solid #e6ecf2; border-radius: 4px; color: #45617b; font-size: .8125rem; letter-spacing: .02em; white-space: nowrap; }
+.alumnos-row-actions { display: flex; justify-content: flex-end; gap: 7px; }
+.alumnos-row-actions form { margin: 0; }
+.alumno-index .alumnos-action { width: 34px; min-height: 34px; height: 34px; padding: 0; background: #fff; border: 1px solid #dce5ee; color: #52708c; font-size: .8125rem; }
+.alumno-index .alumnos-action:hover { background: #edf3f9; border-color: #afc5db; color: #00325f; }
+.alumno-index .alumnos-action--delete { color: #bc5961; border-color: #efdee0; }
+.alumno-index .alumnos-action--delete:hover { background: #fff1f2; border-color: #dda2a8; color: #b42636; }
+.alumnos-panel__footer { padding: 18px 24px; border-top: 1px solid #e5ebf1; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.alumnos-panel__footer p { margin: 0; color: #758598; font-size: .8125rem; }
+.alumnos-panel__footer strong { color: #3e5972; font-weight: 600; }
+.alumnos-panel__footer .pagination { margin-bottom: 0; }
+.alumno-index .alumnos-empty { padding: 56px 24px; text-align: center; }
+.alumnos-empty > i { display: block; margin-bottom: 16px; font-size: 1.5rem; color: #8ba2b9; }
+.alumnos-empty strong { display: block; color: #3e5972; font-size: 1rem; }
+.alumnos-empty p { margin: 8px 0 0; color: #758598; font-size: .875rem; }
+@media (max-width: 991px) {
+    .alumno-index .ui-page-header { align-items: flex-start; flex-direction: column; gap: 18px; }
+    .alumnos-filters__fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .alumnos-filter:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 575px) {
+    .alumno-index .ui-page-header { margin: 20px 0; }
+    .alumno-index .ui-page-header__actions { width: 100%; }
+    .alumno-index .ui-page-header__actions .btn { flex: 1; padding: 9px 10px; }
+    .alumnos-panel__heading, .alumnos-filters, .alumnos-panel__footer { padding: 18px 16px; }
+    .alumnos-panel__heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+    .alumnos-filters__heading span { margin-left: 0; flex-basis: 100%; }
+    .alumnos-filters__fields { gap: 12px; }
+    .alumnos-filters__actions .btn { flex: 1; }
+    .alumno-index .alumnos-table td, .alumno-index .alumnos-table thead th { padding: 12px 16px; }
+}

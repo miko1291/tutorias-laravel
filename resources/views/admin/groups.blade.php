@@ -9,7 +9,7 @@
 @section('content')
 <div class="admin-resource">
     <div class="admin-resource__heading">
-        <div><span>Administración académica</span><h1>Grupos maestros</h1><p>Crea grupos, asigna tutor y administra sus alumnos desde un solo lugar.</p></div>
+        <div><span>Administración académica</span><h1>Grupos maestros</h1><p>Crea grupos y asigna tutores y alumnos.</p></div>
         @if($editGroup)<a class="btn btn-outline-secondary" href="{{ url('/admin/groups') }}">Cerrar edición</a>@endif
     </div>
 
@@ -52,6 +52,7 @@
         <section class="card admin-resource__form">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <strong>Alumnos del grupo</strong><span class="badge badge-primary">{{ $groupStudents->count() }}</span>
+                <a class="btn btn-sm btn-outline-primary" href="{{ route('alumno.importar', ['id_grupo' => $editGroup->id]) }}">Importar Excel</a>
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ url('/admin/groups/'.$editGroup->id.'/assign-student') }}" class="form-inline mb-3">

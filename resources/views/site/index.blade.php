@@ -11,7 +11,7 @@
 @section('content')
 <div class="portal-page">
     @if($esAlumno) @include('site._student-carousel') @endif
-    <header class="portal-hero"><div><span class="portal-kicker">{{ $esAlumno ? 'Espacio del estudiante' : ($esTutor ? 'Espacio de tutoría' : ($esPsicologia ? 'Espacio de psicología' : 'Programa Institucional de Tutorías')) }}</span><h1>Hola, {{ $esAlumno && $alumno ? $alumno->nombres : ($esTutor && $tutor ? $tutor->nombre : auth()->user()->username) }}</h1><p>{{ $esAlumno ? 'Tu información, tus avisos y tu acompañamiento académico, en un solo lugar.' : ($esTutor ? 'Organiza el seguimiento de tus grupos y encuentra las tareas que necesitan tu atención.' : 'Consulta tus herramientas de trabajo y acompaña a la comunidad estudiantil.') }}</p></div>
+    <header class="portal-hero"><div><span class="portal-kicker">{{ $esAlumno ? 'Espacio del estudiante' : ($esTutor ? 'Espacio de tutoría' : ($esPsicologia ? 'Espacio de psicología' : 'Programa Institucional de Tutorías')) }}</span><h1>Hola, {{ $esAlumno && $alumno ? $alumno->nombres : ($esTutor && $tutor ? $tutor->nombre : auth()->user()->username) }}</h1><p>{{ $esAlumno ? 'Consulta tu expediente y los avisos de tutoría.' : ($esTutor ? 'Consulta tus grupos, asistencias y expedientes pendientes.' : 'Consulta los expedientes y registros de atención.') }}</p></div>
     @if($esAlumno)<a class="portal-primary" href="{{ url($enviado ? '/expediente/ficha' : '/expediente/index') }}">{{ $enviado ? 'Ver mi expediente' : 'Completar mi expediente' }} <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
     @elseif($esTutor)<a class="portal-primary" href="{{ url($grupoActual ? '/grupo-master/index' : '/select-grupo/index') }}">{{ $grupoActual ? 'Abrir mi grupo' : 'Seleccionar grupo' }} <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
     @elseif($esPsicologia)<a class="portal-primary" href="{{ url('/expediente-pregunta/index') }}">Diseñar expediente <i class="bi bi-arrow-right" aria-hidden="true"></i></a>@endif
@@ -45,8 +45,8 @@
     </div></section>
     <aside class="portal-support">
         @if($esTutor)<section class="portal-panel"><h2>Mis grupos</h2>@forelse($grupos as $grupo)<div class="portal-group"><strong>{{ $grupo->nombre ?: 'Grupo '.$grupo->id }}</strong><small>{{ $grupo->alumnos_count }} alumnos {{ $grupoActual?->id === $grupo->id ? '· Seleccionado' : '' }}</small><a href="{{ url('/site/assign-id-grupo/'.$grupo->id) }}">Trabajar con este grupo →</a></div>@empty<p>La coordinación puede ayudarte a revisar la asignación de grupos.</p>@endforelse</section>@endif
-        <section class="portal-panel"><span class="portal-kicker">Ayuda para tu día a día</span><h2>Tu manual de usuario</h2><p>Encuentra los pasos para cada actividad, qué significa cada estado y cómo resolver las dudas más comunes.</p><a class="portal-secondary" href="{{ url('/manual?perfil='.$perfilManual) }}">Consultar manual <i class="bi bi-book" aria-hidden="true"></i></a></section>
-        <section class="portal-panel"><h2>Acompañamiento cercano</h2><p>La tutoría te ayuda a identificar necesidades, orientar decisiones y fortalecer tu trayectoria. Si necesitas apoyo, acércate a tu tutora, tutor o coordinación.</p></section>
+        <section class="portal-panel"><span class="portal-kicker">Ayuda</span><h2>Manual de usuario</h2><p>Consulta las instrucciones para usar el sistema.</p><a class="portal-secondary" href="{{ url('/manual?perfil='.$perfilManual) }}">Consultar manual <i class="bi bi-book" aria-hidden="true"></i></a></section>
+        <section class="portal-panel"><h2>Contacto de tutoría</h2><p>Si necesitas apoyo académico o tienes dudas sobre tu expediente, consulta a tu tutor o a la coordinación.</p></section>
     </aside></div>
     <footer class="portal-bottom"><span>Programa Institucional de Tutorías · ITSVA</span><span>Tu información merece un uso responsable.</span></footer>
 </div>

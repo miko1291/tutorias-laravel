@@ -1,10 +1,10 @@
 main > .container {
-    /* padding: 70px 15px 20px; */
+
     padding: 25px 20px;
 }
 
 body{
-    /* font-size: small; */
+
     font-size: small !important;
     background-color: #ebecf1;
 }
@@ -25,7 +25,7 @@ body{
     font-style: italic;
 }
 
-/* add sorting icons to gridview sort links */
+
 a.asc:after, a.desc:after {
     content: '';
     left: 3px;
@@ -71,7 +71,7 @@ a.desc:after {
     margin: 0 0 15px 0;
 }
 
-/* align the logout "link" (button in form) of the navbar */
+
 .nav li > form > button.logout {
     padding-top: 7px;
     color: rgba(255, 255, 255, 0.5);
@@ -115,12 +115,9 @@ a.desc:after {
     margin-bottom: 2rem !important;
 }
 
-/* .nav > li > .active{
-    background-color: var(--tecm-blue);
-    border-radius: .5rem;
-} */
 
-/* LOGIN-BACKEND-CONTAINER */
+
+
 
 div.main-login-container{
     height:100%;
@@ -189,7 +186,7 @@ div.tutoria-info-hover:hover{
     box-shadow: 5px 5px 13px -4px rgb(131, 131, 131);
     transition: .5s box-shadow;
 }
-/* Pat buttons */
+
 .btn-view {
     color: whitesmoke;
     border-radius: .5rem;
@@ -225,7 +222,7 @@ div.tutoria-info-hover:hover{
 }
 
 
-/* Para la tabla de semana real en pat */
+
 .cell-data-tittle{
     background-color: var(--tecm-blue);
     color: whitesmoke;
@@ -257,7 +254,7 @@ div.tutoria-info-hover:hover{
 }
 
 .table-simple td.cell-data-tittle{
-    
+
     border-left: 0px solid rgb(228, 228, 228) !important;
 }
 
@@ -318,7 +315,7 @@ div.tutoria-info-hover:hover{
     background-color: #b6b6b6;
 }
 
-/* btn excel and pdf */
+
 .btn-export {
     display: inline-block;
     font-weight: 400;
@@ -368,16 +365,16 @@ div.tutoria-info-hover:hover{
     border-color: #c7535e;
 }
 
-/* Fondo del details view container main en pat */
+
 .detail-row-grid{
     background-color: #f7f7f7;
 }
 
-/* Botones de accion para Grupos */
+
 #btn-show {
     background-color: #486481;
     color: whitesmoke;
-    /* height: 25px; */
+
     padding: 0 !important;
 }
 
@@ -403,8 +400,8 @@ div.tutoria-info-hover:hover{
     opacity: 0.65;
 }
 
-/* FORMS */
-/* ctz-label */
+
+
 label{
     font-weight: bold;
     color: var(--tecm-blue) !important;
@@ -414,7 +411,7 @@ label{
 
 div.form-header{
     border-radius: 0.25rem 0.25rem 0 0 !important;
-    color: whitesmoke; /* Solo aplica para la descripcion */
+    color: whitesmoke;
     background-color: var(--tecm-blue) !important;
 }
 
@@ -423,7 +420,7 @@ div.form-header{
 }
 
 
-/* GRID CUSTOM */
+
 
 .table-custom th, .table-custom td {
     padding: 0.5rem;

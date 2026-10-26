@@ -8,9 +8,9 @@
 @endsection
 
 @section('content')
-<div class="alumno-create">
+<div class="alumno-create ui-resource-page">
 
-    <x-ui.page-header eyebrow="Gestión académica" title="Nuevo alumno" description="Registra los datos básicos del estudiante para incorporarlo al programa." />
+    <x-ui.page-header eyebrow="Gestión académica" title="Nuevo alumno" description="Completa los datos del alumno." />
 
     @include('alumno._form', [
         'model' => $model,

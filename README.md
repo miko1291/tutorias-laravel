@@ -1,78 +1,64 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Control de Tutorías
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Sistema del Programa Institucional de Tutorías del Instituto Tecnológico Superior de Valladolid, desarrollado en Laravel.
 
-## About Laravel
+Incluye expedientes de alumnos, asignación de grupos y tutores, asistencia, diagnósticos, canalizaciones y actividades del programa tutorial. El administrador gestiona las cuentas, los catálogos y las opciones del expediente.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Instalación local
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Requiere PHP 8.3 o superior y Composer. Para compilar los recursos de Vite también se necesita Node.js.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+1. Instala las dependencias con `composer install`.
+2. Copia `.env.example` a `.env` y configura la conexión de base de datos, la URL y el correo.
+3. Genera la clave con `php artisan key:generate`.
+4. Crea las tablas con `php artisan migrate`.
+5. Configura el servidor local para que apunte a la carpeta `public`.
+
+Los estilos y scripts del portal están en `public/css` y `public/js`. Para los recursos de Vite, usa `npm install` y `npm run build`.
+
+## Pruebas
+
+```powershell
+php artisan test
+node --test tests/Unit/app-shell.test.cjs
+```
+
+Las pruebas de PHP usan una base SQLite en memoria, según `phpunit.xml`.
+
+## Datos de prueba
+
+En el entorno local se pueden cargar cuentas y registros ficticios:
+
+```powershell
+php artisan db:seed --class=PruebasPortalSeeder
+```
+
+Este seeder está limitado a los entornos `local` y `testing`.
 
 ## Migración de datos desde Yii2
 
-La conexión `legacy` apunta por defecto a la base `tutorias` en el mismo servidor
-MySQL. Configura las variables `LEGACY_DB_*` en `.env` si el origen usa otra
-conexión. Primero revisa el alcance sin escribir:
+La conexión `legacy` apunta por defecto a la base `tutorias` en el mismo servidor MySQL. Configura las variables `LEGACY_DB_*` en `.env` si el origen usa otra conexión.
+
+Revisa primero los datos que se copiarán:
 
 ```powershell
 php artisan tutorias:migrate-legacy --dry-run
 ```
 
-Cuando el resultado sea correcto, ejecuta la copia. El comando conserva IDs,
-hashes y roles, usa una transacción e `insertOrIgnore`, y no sobrescribe filas
-existentes:
+Para ejecutar la copia:
 
 ```powershell
 php artisan tutorias:migrate-legacy
 ```
 
-También permite limitar tablas con `--table=user --table=auth_assignment`.
+El comando conserva los IDs, hashes y roles. Usa una transacción y no sobrescribe filas existentes. Para limitar la copia a ciertas tablas, agrega opciones como `--table=user --table=auth_assignment`.
 
-## Learning Laravel
+## Catálogos del expediente
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Los estados, municipios y demás listas se editan desde **Catálogos → Estados, municipios y listas**. Los municipios iniciales de Yucatán, Quintana Roo, Campeche y Tabasco proceden del [Catálogo Único del INEGI](https://www.inegi.org.mx/servicios/catalogounico.html).
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Las preguntas y las secciones se administran desde **Gestión → Diseñar expediente**. Los manuales por perfil están disponibles en **Ayuda**.
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+## Dependencias
 
-## Agentic Development
-
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
-
-```bash
-composer require laravel/boost --dev
-
-php artisan boost:install
-```
-
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Laravel se distribuye bajo licencia MIT. Las demás dependencias conservan sus respectivas licencias.

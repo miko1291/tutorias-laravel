@@ -2,12 +2,16 @@
 
 @section('title', $titulo)
 
+@section('breadcrumbs')
+    <li class="breadcrumb-item active" aria-current="page">{{ $titulo }}</li>
+@endsection
+
 @section('content')
     <div class="ui-resource-page">
         <x-ui.page-header eyebrow="Seguimiento tutorial" :title="$titulo" description="Registra y consulta la información de seguimiento de tus alumnos." />
     @if($formulario)
-        <div class="card mb-4">
-            <div class="card-body">
+        <div class="card ui-form-card mb-4">
+            <div class="card-body"><h2 class="ui-form-card__title"><i class="fas fa-plus-circle" aria-hidden="true"></i> Nuevo registro</h2><p class="ui-form-intro">Selecciona al alumno y completa los datos del seguimiento.</p>
                 <form method="POST" action="{{ url('/'.$formulario.'/guardar') }}">
                     @csrf
                     <div class="form-row">
@@ -32,14 +36,14 @@
                             <div class="form-group col-md-3"><label>Cuerpo</label><textarea name="cuerpo" class="form-control" required></textarea></div>
                         @endif
                     </div>
-                    <button class="btn btn-primary">Guardar</button>
+                    <div class="ui-form-actions"><button class="btn btn-primary" type="submit"><i class="fas fa-save" aria-hidden="true"></i> Guardar registro</button></div>
                 </form>
             </div>
         </div>
     @endif
 
-    <div class="card ui-table-card"><div class="table-responsive"><table class="table ui-table mb-0">
+    <x-ui.list-panel title="Registros de seguimiento"><table class="table ui-table mb-0">
         <thead><tr>@foreach($columnas as $columna)<th>{{ $columna }}</th>@endforeach</tr></thead>
-        <tbody>@forelse($filas as $fila)<tr>@foreach($fila as $valor)<td>{{ $valor }}</td>@endforeach</tr>@empty<tr><td colspan="{{ count($columnas) }}">No hay registros.</td></tr>@endforelse</tbody>
-    </table>    </div></div></div>
+        <tbody>@forelse($filas as $fila)<tr>@foreach($fila as $valor)<td>{{ $valor }}</td>@endforeach</tr>@empty<tr><td colspan="{{ count($columnas) }}" class="ui-empty-state"><strong>No hay registros.</strong>Los registros de seguimiento aparecerán aquí.</td></tr>@endforelse</tbody>
+    </table></x-ui.list-panel></div>
 @endsection

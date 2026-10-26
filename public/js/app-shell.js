@@ -35,7 +35,7 @@
         }
 
         form.dataset.submitting = 'true';
-        // Wait until the browser has captured the clicked button's name/value.
+        // Espera a que el navegador capture el valor del botón antes de desactivarlo.
         window.setTimeout(() => {
             if (event.defaultPrevented) {
                 resetForms();

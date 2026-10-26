@@ -5,7 +5,7 @@
 @section('content')
 <div class="auth-page auth-recovery">
     @include('site._brand')
-    <section class="auth-panel"><a class="auth-back" href="{{ route('login') }}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver al acceso</a><span class="portal-kicker">Estamos para ayudarte</span><h1>¿Olvidaste tu contraseña?</h1><p>Escribe el correo registrado en tu cuenta. Te enviaremos un enlace para crear una nueva contraseña.</p>
+    <section class="auth-panel"><a class="auth-back" href="{{ route('login') }}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Volver al acceso</a><span class="portal-kicker">Recuperación de contraseña</span><h1>¿Olvidaste tu contraseña?</h1><p>Escribe el correo registrado en tu cuenta. Te enviaremos un enlace para crear una nueva contraseña.</p>
         @include('partials.flash')
         <form method="post" action="{{ route('password.email') }}">@csrf
             <div class="form-group"><label for="recovery-email">Correo de tu cuenta</label><input type="email" name="email" id="recovery-email" class="form-control @error('email') is-invalid @enderror" autocomplete="email" value="{{ old('email') }}" placeholder="tu-correo@ejemplo.com" required autofocus>@error('email')<div class="invalid-feedback" role="alert">{{ $message }}</div>@enderror</div>

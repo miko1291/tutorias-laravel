@@ -126,8 +126,6 @@ class SiteController extends Controller
         Auth::login($user, $request->boolean('rememberMe', true));
         $request->session()->regenerate();
 
-        // Solo los tutores necesitan seleccionar un grupo al iniciar sesión.
-        // Los alumnos no tienen un registro en la tabla tutor.
         if ($user->hasRole('tutor')) {
             $tutor = Tutor::where('id_user', $user->id)->first();
             if (! $tutor) {

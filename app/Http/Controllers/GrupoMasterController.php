@@ -189,8 +189,6 @@ class GrupoMasterController extends Controller
             $request->session()->put('id_grupo', (int) $grupo->id);
         }
 
-        // Una notificación puede abrir el reporte sin la sesión de grupo
-        // que normalmente se establece desde el selector de grupos.
         if (! $grupo && $tutor) {
             $gruposAsignados = GrupoMaster::where('id_tutor', $tutor->id)
                 ->orderByDesc('id')

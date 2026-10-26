@@ -44,12 +44,9 @@ class User extends Authenticatable
         return $this->password_hash;
     }
 
-    /**
-     * La tabla `user` heredada de Yii2 no tiene columna remember_token;
-     * el mecanismo "Mantener mi sesión" se apoya en auth_key, igual que la cookie de identidad de Yii2.
-     */
     public function getRememberTokenName()
     {
+        // La tabla heredada usa auth_key en lugar de remember_token.
         return 'auth_key';
     }
 

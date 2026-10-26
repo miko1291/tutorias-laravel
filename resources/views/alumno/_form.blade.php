@@ -17,7 +17,7 @@
     <form method="post" action="{{ $accion }}" class="card-body">
         @csrf
         <div class="ui-form-card__title"><i class="fas fa-id-card"></i> Información del estudiante</div>
-        <p class="text-muted small">Completa los campos obligatorios para mantener la ficha académica actualizada.</p>
+        <p class="text-muted small">Los campos obligatorios deben completarse antes de guardar.</p>
         <div class="form-row">
             <div class="col-md-4">
                 <div class="form-group">
@@ -88,8 +88,9 @@
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="ui-form-actions">
             <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar información</button>
+            <a class="btn btn-outline-secondary" href="{{ url('/alumno/index') }}">Cancelar</a>
         </div>
     </form>
 </div>

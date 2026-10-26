@@ -6,7 +6,7 @@
 <div class="auth-page auth-login">
     @include('site._brand')
     <div class="auth-layout">
-        <section class="auth-story"><span class="portal-kicker">{{ $perfil['nombre'] }} · Programa de Tutorías</span><h1>Continúa donde<br>lo dejaste.</h1><p>{{ $perfil['descripcion'] }}</p><div class="auth-photo"><img src="{{ asset('images/tuto1.png') }}" alt="Actividades de la comunidad ITSVA"><span>Cada paso cuenta. Estamos para acompañarte.</span></div></section>
+        <section class="auth-story"><span class="portal-kicker">{{ $perfil['nombre'] }} · Programa de Tutorías</span><h1>Iniciar sesión</h1><p>{{ $perfil['descripcion'] }}</p><div class="auth-photo"><img src="{{ asset('images/tuto1.png') }}" alt="Actividades de la comunidad ITSVA"><span>Instituto Tecnológico Superior de Valladolid</span></div></section>
         <section class="auth-panel"><a class="auth-back" href="{{ url('/site/acceso') }}"><i class="bi bi-arrow-left" aria-hidden="true"></i> Cambiar perfil de acceso</a><h2>{{ $perfil['titulo'] }}</h2><p>Ingresa con el usuario y la contraseña de tu cuenta.</p>
         @include('partials.flash')
         <form method="post" action="{{ url('/site/login') }}" id="login-form">

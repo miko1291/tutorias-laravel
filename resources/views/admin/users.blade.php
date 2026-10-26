@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 <div class="ui-resource-page">
-    <x-ui.page-header eyebrow="Administración" title="Usuarios y roles" description="Gestiona las cuentas, estados y permisos del sistema.">
+    <x-ui.page-header eyebrow="Administración" title="Usuarios y roles" description="Administra las cuentas y los permisos de acceso.">
         <a class="btn btn-primary" href="{{ url('/admin/users') }}"><i class="fas fa-user-plus"></i> Nueva cuenta</a>
     </x-ui.page-header>
     <form method="POST" action="{{ url($editUser ? '/admin/users/'.$editUser->id.'/save' : '/admin/users/save') }}" class="card ui-form-card mb-4">@csrf

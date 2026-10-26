@@ -6,7 +6,7 @@
 <div class="auth-page">
     @include('site._brand')
     <div class="auth-layout">
-        <section class="auth-story"><span class="portal-kicker">Programa Institucional de Tutorías</span><h1>Tu trayectoria.<br>Un acompañamiento cercano.</h1><p>Un lugar para mantener tu expediente al día, conectar con tu tutoría y dar seguimiento a cada etapa de tu formación.</p><div class="auth-photo"><img src="{{ asset('images/tuto2.png') }}" alt="Comunidad estudiantil del ITSVA"><span>Instituto Tecnológico Superior de Valladolid</span></div></section>
+        <section class="auth-story"><span class="portal-kicker">Programa Institucional de Tutorías</span><h1>Sistema de<br>tutorías</h1><p>Consulta tu expediente, revisa los avisos y da seguimiento a tus actividades de tutoría.</p><div class="auth-photo"><img src="{{ asset('images/tuto2.png') }}" alt="Comunidad estudiantil del ITSVA"><span>Instituto Tecnológico Superior de Valladolid</span></div></section>
         <section class="auth-panel" aria-labelledby="access-title"><h2 id="access-title">Bienvenido a Tutorías</h2><p>Elige tu perfil para continuar con tus actividades.</p><div class="auth-roles">
         @foreach([
             ['alumno', 'Alumno', 'Mi perfil, expediente y avisos.', 'mortarboard'],

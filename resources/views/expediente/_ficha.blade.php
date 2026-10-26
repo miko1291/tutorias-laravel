@@ -3,10 +3,7 @@
     /** @var \App\Models\AlumnoExpediente|null $expediente */
     /** @var array $respuestas */
     /** @var bool $allowEdit */
-
-    // Este catálogo debe coincidir con los names del formulario. Los campos
-    // campo_00X son identificadores históricos del cuestionario, no posiciones
-    // genéricas; por eso se declaran explícitamente.
+    // Estas claves identifican respuestas guardadas; no indican la posición de la pregunta.
     $fieldLabels = [
         'fecha_nacimiento' => 'Fecha de nacimiento',
         'campo_002' => 'Fecha de actualización',
@@ -119,14 +116,8 @@
     };
     foreach ($respuestas as $key => $value) {
         if ($value === '' || $value === null || $value === []) continue;
-        // El cuestionario actual usa campo_022. tipo_sangre pertenece a una
-        // versión anterior y no debe mostrarse junto con el mismo dato.
         if ($key === 'tipo_sangre' && array_key_exists('campo_022', $respuestas)) continue;
-        // campo_008 pertenece a una versión anterior que capturaba la edad
-        // manualmente. La edad actual se deriva de fecha_nacimiento en campo_007.
         if ($key === 'campo_008' && array_key_exists('campo_007', $respuestas)) continue;
-        // La versión actual desglosa la discapacidad por categoría; evita
-        // repetir el indicador general que sólo existía en versiones previas.
         if ($key === 'discapacidad' && collect(array_keys($respuestas))->contains(
             static fn ($responseKey) => strpos((string) $responseKey, 'disc_') === 0
         )) continue;

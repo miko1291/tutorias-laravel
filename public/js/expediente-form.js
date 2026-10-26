@@ -3,6 +3,32 @@
     if (!form) return;
     const fields = [...form.querySelectorAll('.ef-question')];
     const byKey = new Map(fields.map(field => [field.dataset.key, field]));
+    const municipalFields = fields.filter(field => field.dataset.municipios);
+    const selectedStates = new Map();
+    function updateMunicipalities() {
+        municipalFields.forEach(field => {
+            const parent = byKey.get(field.dataset.estadoClave)?.querySelector('select');
+            const select = field.querySelector('select');
+            if (!parent || !select) return;
+            const state = parent.value;
+            if (selectedStates.has(field) && selectedStates.get(field) === state) return;
+            const initial = !selectedStates.has(field);
+            const previous = select.value;
+            const municipalities = JSON.parse(field.dataset.municipios);
+            const labels = JSON.parse(field.dataset.etiquetas || '{}');
+            const options = [...new Set([...(municipalities[state] || []), 'Otro'])];
+            if (initial && previous && !options.includes(previous)) options.push(previous);
+            select.replaceChildren();
+            ['', ...options].forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = value ? (labels[value] || value) : 'Selecciona una opción';
+                select.append(option);
+            });
+            select.value = initial ? previous : '';
+            selectedStates.set(field, state);
+        });
+    }
     const answers = key => {
         const field = byKey.get(key);
         if (!field) return [];
@@ -19,6 +45,7 @@
         return Boolean(primary || alternative);
     };
     function update() {
+        updateMunicipalities();
         let required = 0;
         let completed = 0;
         fields.forEach(field => {

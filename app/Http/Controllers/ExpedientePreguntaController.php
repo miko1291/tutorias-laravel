@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\ExpedientePregunta;
+use App\Services\ExpedienteCatalogoService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -53,11 +54,15 @@ class ExpedientePreguntaController extends Controller
             'secciones.*.preguntas.*.titulo' => ['required', 'string', 'max:255'],
             'secciones.*.preguntas.*.descripcion' => ['nullable', 'string', 'max:2000'],
             'secciones.*.preguntas.*.tipo' => ['required', Rule::in(['text', 'textarea', 'email', 'tel', 'number', 'date', 'select', 'radio', 'checkbox'])],
-            'secciones.*.preguntas.*.opciones' => ['present', 'array', 'max:150'],
+            'secciones.*.preguntas.*.opciones' => ['present', 'array', 'max:5000'],
             'secciones.*.preguntas.*.opciones.*' => ['required', 'string', 'max:255'],
             'secciones.*.preguntas.*.requerido' => ['required', 'boolean'],
             'secciones.*.preguntas.*.activo' => ['required', 'boolean'],
-            'secciones.*.preguntas.*.configuracion' => ['present', 'array:placeholder,min,max,maxlength,pattern,etiquetas,condicion'],
+            'secciones.*.preguntas.*.configuracion' => ['present', 'array:placeholder,min,max,maxlength,pattern,etiquetas,condicion,municipios_por_estado,estado_clave'],
+            'secciones.*.preguntas.*.configuracion.municipios_por_estado' => ['sometimes', 'array', 'max:100'],
+            'secciones.*.preguntas.*.configuracion.municipios_por_estado.*' => ['array', 'max:500'],
+            'secciones.*.preguntas.*.configuracion.municipios_por_estado.*.*' => ['string', 'max:255'],
+            'secciones.*.preguntas.*.configuracion.estado_clave' => ['sometimes', 'string', 'max:90'],
             'secciones.*.preguntas.*.configuracion.placeholder' => ['nullable', 'string', 'max:255'],
             'secciones.*.preguntas.*.configuracion.min' => ['nullable', 'string', 'max:30'],
             'secciones.*.preguntas.*.configuracion.max' => ['nullable', 'string', 'max:30'],
@@ -118,6 +123,12 @@ class ExpedientePreguntaController extends Controller
             foreach ($data['secciones'] as $sectionIndex => $section) {
                 foreach ($section['preguntas'] as $questionIndex => $definition) {
                     $question = isset($definition['id']) ? $byId->get($definition['id']) : new ExpedientePregunta;
+                    if (isset($question->configuracion['municipios_por_estado'])) {
+                        $definition['configuracion']['municipios_por_estado'] = $question->configuracion['municipios_por_estado'];
+                        $definition['configuracion']['estado_clave'] = $question->configuracion['estado_clave'];
+                        $definition['opciones'] = $question->opciones;
+                        $definition['tipo'] = 'select';
+                    }
                     $question->fill(collect($definition)->except(['id', 'opciones'])->all());
                     $question->seccion = trim($section['titulo']);
                     $question->seccion_orden = $sectionIndex + 1;
@@ -232,5 +243,7 @@ class ExpedientePreguntaController extends Controller
                 $question->save();
             }
         }
+
+        ExpedienteCatalogoService::prepararMunicipios();
     }
 }

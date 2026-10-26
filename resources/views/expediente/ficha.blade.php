@@ -29,8 +29,8 @@
     @else
         <div class="student-empty">
             <i class="bi bi-folder2-open" aria-hidden="true"></i>
-            <h2>Tu expediente comienza aquí</h2>
-            <p>Aún no tienes un expediente registrado. Completa tu información para iniciar tu seguimiento tutorial.</p>
+            <h2>Sin expediente registrado</h2>
+            <p>Completa el formulario y envíalo para registrar tu expediente.</p>
             <a class="student-button" href="{{ url('/expediente/index') }}"><i class="bi bi-plus-circle" aria-hidden="true"></i> Completar mi expediente</a>
         </div>
     @endif

@@ -27,36 +27,36 @@
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{{ asset('images/tuto1.png') }}" alt="Actividades institucionales del ITSVA" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Programa Institucional de Tutorías</span><strong>Acompañamiento integral para estudiantes</strong><small>Fortalecemos tu trayectoria académica y bienestar.</small></div>
+                <div class="pit-carousel-caption"><span>Programa Institucional de Tutorías</span><strong>Tutorías ITSVA</strong><small>Expedientes, grupos y actividades del programa de tutorías.</small></div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('images/tuto2.png') }}" alt="Actividades institucionales del ITSVA" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Comunidad ITSVA</span><strong>Construimos oportunidades juntos</strong><small>La tutoría conecta, orienta y acompaña.</small></div>
+                <div class="pit-carousel-caption"><span>Comunidad ITSVA</span><strong>Atención a estudiantes</strong><small>Consulta a tu tutor si necesitas orientación académica.</small></div>
             </div>
             <div class="carousel-item">
                 <img src="{{ asset('images/tuto3.png') }}" alt="Actividades institucionales del ITSVA" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Seguimiento tutorial</span><strong>Tu desarrollo es nuestra prioridad</strong><small>Consulta tus herramientas y mantén tu información actualizada.</small></div>
+                <div class="pit-carousel-caption"><span>Seguimiento tutorial</span><strong>Información actualizada</strong><small>Consulta tus herramientas y mantén tu información actualizada.</small></div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/tuto1.png') }}" alt="Visión del Programa Institucional de Tutorías" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Visión</span><strong>Una tutoría que transforma</strong><small>Impactamos positivamente en la calidad educativa y el desarrollo integral del estudiante.</small></div>
+                <img src="{{ asset('images/tuto1.png') }}" alt="Actividades institucionales del ITSVA" class="d-block pit-carousel-image">
+                <div class="pit-carousel-caption"><span>Expedientes</span><strong>Datos personales y académicos</strong><small>Revisa tus respuestas antes de enviar el expediente.</small></div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/tuto2.png') }}" alt="Misión del Programa Institucional de Tutorías" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Misión</span><strong>Acompañar para avanzar</strong><small>Contribuimos a la calidad educativa y a la permanencia mediante estrategias de acompañamiento tutorial.</small></div>
+                <img src="{{ asset('images/tuto2.png') }}" alt="Actividades de tutoría del ITSVA" class="d-block pit-carousel-image">
+                <div class="pit-carousel-caption"><span>Actividades</span><strong>Seguimiento de tutoría</strong><small>Consulta las actividades y los avisos de tu grupo.</small></div>
             </div>
             <div class="carousel-item">
-                <img src="{{ asset('images/tuto3.png') }}" alt="Objetivo del Programa Institucional de Tutorías" class="d-block pit-carousel-image">
-                <div class="pit-carousel-caption"><span>Objetivo</span><strong>Fortalecer cada trayectoria</strong><small>Favorecemos el rendimiento académico, la eficiencia terminal y la formación integral.</small></div>
+                <img src="{{ asset('images/tuto3.png') }}" alt="Comunidad estudiantil del ITSVA" class="d-block pit-carousel-image">
+                <div class="pit-carousel-caption"><span>Ayuda</span><strong>Orientación académica</strong><small>Acude a tu tutor o a la coordinación cuando necesites apoyo.</small></div>
             </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
+            <span class="sr-only">Anterior</span>
         </a>
         <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
+            <span class="sr-only">Siguiente</span>
         </a>
     </section>
     @endif
